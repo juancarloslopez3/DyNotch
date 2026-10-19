@@ -1,0 +1,4719 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
+    " & " : {
+      "comment" : "Joins the widgets sharing a card: Calendar & Reminders",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " y "
+          }
+        }
+      }
+    },
+    "%@ (Default)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (predeterminado)"
+          }
+        }
+      }
+    },
+    "%@ is allowed" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: permitido"
+          }
+        }
+      }
+    },
+    "%@ isn't installed, so Music opens instead." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ no está instalado, así que se abrirá Música."
+          }
+        }
+      }
+    },
+    "%@ left" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quedan %@"
+          }
+        }
+      }
+    },
+    "%@ needs access" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ necesita acceso"
+          }
+        }
+      }
+    },
+    "%@ s" : {
+      "shouldTranslate" : false
+    },
+    "%@ stays on the Home tab" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ se queda en la pestaña Inicio"
+          }
+        }
+      }
+    },
+    "%@ timer" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temporizador de %@"
+          }
+        }
+      }
+    },
+    "%@ timer finished" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ha terminado el temporizador de %@"
+          }
+        }
+      }
+    },
+    "%@ to full" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carga completa en %@"
+          }
+        }
+      }
+    },
+    "%@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "%@ · All day" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · Todo el día"
+          }
+        }
+      }
+    },
+    "%@ · H:%@  L:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · H:%2$@  L:%3$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · Máx.:%@  Mín.:%@"
+          }
+        }
+      }
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "%lld" : {
+      "shouldTranslate" : false
+    },
+    "%lld more due" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld more due"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld more due"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld más pendiente"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld más pendientes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld reminders due" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld recordatorios pendientes"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+      "shouldTranslate" : false
+    },
+    "%lldm" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        }
+      }
+    },
+    "+%lld" : {
+      "shouldTranslate" : false
+    },
+    "03:36" : {
+      "shouldTranslate" : false
+    },
+    "1 min" : {
+      "shouldTranslate" : false
+    },
+    "1 reminder due" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 recordatorio pendiente"
+          }
+        }
+      }
+    },
+    "9:41" : {
+      "shouldTranslate" : false
+    },
+    ":" : {
+      "shouldTranslate" : false
+    },
+    "A Bluetooth device connects" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se conecta un dispositivo Bluetooth"
+          }
+        }
+      }
+    },
+    "A Dynamic Island for your Mac's notch." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una Dynamic Island para el notch de tu Mac."
+          }
+        }
+      }
+    },
+    "A Focus mode turns on or off" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se activa o desactiva un modo de concentración"
+          }
+        }
+      }
+    },
+    "A charger is plugged in or the battery runs low" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se conecta un cargador o la batería se está agotando"
+          }
+        }
+      }
+    },
+    "A column fits two large widgets, a large one with up to two small ones, or three small ones, in any order. Next to a large widget, small ones sit side by side; on their own they fill the column, and show large when there's room. Empty columns are left out, and the others share their room." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En una columna caben dos widgets grandes, uno grande con hasta dos pequeños, o tres pequeños, en cualquier orden. Junto a un widget grande, los pequeños se colocan uno al lado del otro; solos, ocupan toda la columna y se muestran grandes si hay sitio. Las columnas vacías se omiten y las demás se reparten su espacio."
+          }
+        }
+      }
+    },
+    "A quick look at your camera" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un vistazo rápido a tu cámara"
+          }
+        }
+      }
+    },
+    "About" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de"
+          }
+        }
+      }
+    },
+    "Accessibility" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesibilidad"
+          }
+        }
+      }
+    },
+    "Acknowledgements" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agradecimientos"
+          }
+        }
+      }
+    },
+    "Add %lld seconds" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir %lld segundos"
+          }
+        }
+      }
+    },
+    "Add Home widgets in Settings › Layout" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade widgets de Inicio en Ajustes › Disposición"
+          }
+        }
+      }
+    },
+    "Add Widget" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir widget"
+          }
+        }
+      }
+    },
+    "Add a city" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir una ciudad"
+          }
+        }
+      }
+    },
+    "Add a minute" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir un minuto"
+          }
+        }
+      }
+    },
+    "Add a region or country to narrow it down, e.g. “Portland, Oregon”." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade una región o un país para afinar la búsqueda, p. ej., “Portland, Oregón”."
+          }
+        }
+      }
+    },
+    "Add to Home" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir a Inicio"
+          }
+        }
+      }
+    },
+    "Adjust with the brightness keys while holding" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustar con las teclas de brillo manteniendo pulsada"
+          }
+        }
+      }
+    },
+    "After round %lld" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tras la ronda %lld"
+          }
+        }
+      }
+    },
+    "Again" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otra vez"
+          }
+        }
+      }
+    },
+    "AirDrop" : {
+      "shouldTranslate" : false
+    },
+    "Alarm sound" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonido de alarma"
+          }
+        }
+      }
+    },
+    "Alerts you when a timer finishes." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te avisa cuando termina un temporizador."
+          }
+        }
+      }
+    },
+    "All %lld rounds done" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Round done"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "All %lld rounds done"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ronda terminada"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Las %lld rondas terminadas"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "All Displays" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas las pantallas"
+          }
+        }
+      }
+    },
+    "All day" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo el día"
+          }
+        }
+      }
+    },
+    "All done for today" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo hecho por hoy"
+          }
+        }
+      }
+    },
+    "Allow" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir"
+          }
+        }
+      }
+    },
+    "Allow Access" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir acceso"
+          }
+        }
+      }
+    },
+    "Allow All" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir todo"
+          }
+        }
+      }
+    },
+    "Allow Camera" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir cámara"
+          }
+        }
+      }
+    },
+    "Allow everything DyNotch can use" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir todo lo que DyNotch puede usar"
+          }
+        }
+      }
+    },
+    "Allowed" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitido"
+          }
+        }
+      }
+    },
+    "Already hidden: DyNotch hides in every full-screen app (General › Displays)." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya está oculto: DyNotch se oculta en todas las apps a pantalla completa (General › Pantallas)."
+          }
+        }
+      }
+    },
+    "Animate AirPods as they connect" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animar los AirPods al conectarse"
+          }
+        }
+      }
+    },
+    "App" : {
+      "shouldTranslate" : false
+    },
+    "Arrange the widgets and tabs in Settings › Layout." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organiza los widgets y las pestañas en Ajustes › Disposición."
+          }
+        }
+      }
+    },
+    "As Others See You" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como te ven los demás"
+          }
+        }
+      }
+    },
+    "As others see you" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como te ven los demás"
+          }
+        }
+      }
+    },
+    "Asks for each one in turn: answer the prompts, then switch on the rest in System Settings." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los pide uno por uno: responde a los avisos y después activa el resto en Ajustes del Sistema."
+          }
+        }
+      }
+    },
+    "Automatic" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automático"
+          }
+        }
+      }
+    },
+    "BSD 3-Clause · Jonas van den Berg" : {
+      "shouldTranslate" : false
+    },
+    "Back" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atrás"
+          }
+        }
+      }
+    },
+    "Bars move with the music" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las barras se mueven con la música"
+          }
+        }
+      }
+    },
+    "Battery" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batería"
+          }
+        }
+      }
+    },
+    "Battery level" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nivel de batería"
+          }
+        }
+      }
+    },
+    "Beside the Notch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Junto al notch"
+          }
+        }
+      }
+    },
+    "Bluetooth" : {
+      "shouldTranslate" : false
+    },
+    "Bluetooth Device" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivo Bluetooth"
+          }
+        }
+      }
+    },
+    "Break's Over" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se acabó el descanso"
+          }
+        }
+      }
+    },
+    "Brightness" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brillo"
+          }
+        }
+      }
+    },
+    "Brightness keys adjust" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las teclas de brillo ajustan"
+          }
+        }
+      }
+    },
+    "Built-in Display Only" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo la pantalla integrada"
+          }
+        }
+      }
+    },
+    "Calendar" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendario"
+          }
+        }
+      }
+    },
+    "Calendar & Reminders" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendario y Recordatorios"
+          }
+        }
+      }
+    },
+    "Calendars" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendarios"
+          }
+        }
+      }
+    },
+    "Camera" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cámara"
+          }
+        }
+      }
+    },
+    "Camera access is off" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El acceso a la cámara está desactivado"
+          }
+        }
+      }
+    },
+    "Can't be adjusted" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se puede ajustar"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "Caps Lock" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mayúsculas"
+          }
+        }
+      }
+    },
+    "Caps Lock is toggled" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se activa o desactiva Bloq Mayús"
+          }
+        }
+      }
+    },
+    "Caps Off" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minúsculas"
+          }
+        }
+      }
+    },
+    "Celsius" : {
+      "shouldTranslate" : false
+    },
+    "Charged" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargada"
+          }
+        }
+      }
+    },
+    "Charging" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargando"
+          }
+        }
+      }
+    },
+    "Check for Updates" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar actualizaciones"
+          }
+        }
+      }
+    },
+    "Choose DyNotch in the list above" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige DyNotch en la lista de arriba"
+          }
+        }
+      }
+    },
+    "Choose a City" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir una ciudad"
+          }
+        }
+      }
+    },
+    "City" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciudad"
+          }
+        }
+      }
+    },
+    "Clear" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaciar"
+          }
+        }
+      }
+    },
+    "Clear the Shelf?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Vaciar el Estante?"
+          }
+        }
+      }
+    },
+    "Clear the search" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar la búsqueda"
+          }
+        }
+      }
+    },
+    "Click" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hacer clic"
+          }
+        }
+      }
+    },
+    "Click for the next event" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haz clic para ver el próximo evento"
+          }
+        }
+      }
+    },
+    "Click for upcoming events" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haz clic para ver los próximos eventos"
+          }
+        }
+      }
+    },
+    "Click the clock in the open notch." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haz clic en el reloj del notch abierto."
+          }
+        }
+      }
+    },
+    "Click the gear in the open notch." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haz clic en el engranaje del notch abierto."
+          }
+        }
+      }
+    },
+    "Click the notch at the top of your screen. Hovering over it shows a small peek first." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haz clic en el notch, en la parte superior de la pantalla. Al pasar el puntero por encima, primero se asoma un poco."
+          }
+        }
+      }
+    },
+    "Click the picture to see yourself as others do. Video stays on your Mac and the camera turns off when the notch closes." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haz clic en la imagen para verte como te ven los demás. El vídeo no sale de tu Mac y la cámara se apaga al cerrarse el notch."
+          }
+        }
+      }
+    },
+    "Clock" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reloj"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "Cloudy" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nublado"
+          }
+        }
+      }
+    },
+    "Connected" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conectado"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        }
+      }
+    },
+    "Copy" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar"
+          }
+        }
+      }
+    },
+    "Copy %lld Items" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar %lld ítems"
+          }
+        }
+      }
+    },
+    "Couldn't check for updates" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han podido buscar actualizaciones"
+          }
+        }
+      }
+    },
+    "Couldn't load the weather. Try Refresh Now." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido cargar el tiempo. Prueba con “Actualizar ahora”."
+          }
+        }
+      }
+    },
+    "Couldn't reach Open-Meteo. Check your internet connection." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido conectar con Open-Meteo. Comprueba tu conexión a internet."
+          }
+        }
+      }
+    },
+    "Current Location" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubicación actual"
+          }
+        }
+      }
+    },
+    "Default (%@)" : {
+      "comment" : "The macOS language, e.g. Default (English)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Predeterminado (%@)"
+          }
+        }
+      }
+    },
+    "Didn't answer over DDC/CI" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No ha respondido por DDC/CI"
+          }
+        }
+      }
+    },
+    "Disconnected" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desconectado"
+          }
+        }
+      }
+    },
+    "Display" : {
+      "comment" : "The name of a display that has none",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pantalla"
+          }
+        }
+      }
+    },
+    "Display With the Pointer" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La pantalla con el puntero"
+          }
+        }
+      }
+    },
+    "Display brightness" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brillo de la pantalla"
+          }
+        }
+      }
+    },
+    "Displays" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pantallas"
+          }
+        }
+      }
+    },
+    "Displays not made by Apple are adjusted over DDC/CI. If one doesn't respond, turn on DDC/CI in its own menu; some docks and adapters don't pass it on." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las pantallas que no son de Apple se ajustan por DDC/CI. Si alguna no responde, activa DDC/CI en su propio menú; algunos adaptadores y bases de conexión no lo transmiten."
+          }
+        }
+      }
+    },
+    "Do Not Disturb" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No molestar"
+          }
+        }
+      }
+    },
+    "Don't show tabs" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No mostrar las pestañas"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listo"
+          }
+        }
+      }
+    },
+    "Download" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descargar"
+          }
+        }
+      }
+    },
+    "Drag DyNotch to the list above" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrastra DyNotch a la lista de arriba"
+          }
+        }
+      }
+    },
+    "Drag a file from Finder or the desktop toward the notch. Drop it on Shelf to keep it at hand, or on AirDrop to send it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrastra un archivo desde el Finder o el escritorio hacia el notch. Suéltalo en Estante para tenerlo a mano, o en AirDrop para enviarlo."
+          }
+        }
+      }
+    },
+    "Drag a widget up, down or into another column, onto a dashed slot to start a column, or onto the tray to take it off; drag one from the tray to add it. The clock always stays. Move a column by the handle under it and the tabs sideways. Right-click a widget to resize it, and click a tab to preview it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrastra un widget hacia arriba, hacia abajo o a otra columna, a un hueco discontinuo para empezar una columna, o a la bandeja para quitarlo; arrastra uno desde la bandeja para añadirlo. El reloj siempre se queda. Mueve una columna con el asa que tiene debajo, y las pestañas hacia los lados. Haz clic derecho en un widget para cambiar su tamaño, y haz clic en una pestaña para previsualizarla."
+          }
+        }
+      }
+    },
+    "Drag onto the notch to add %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrastra al notch para añadir %@"
+          }
+        }
+      }
+    },
+    "Drag some here from below" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrastra algunos aquí desde abajo"
+          }
+        }
+      }
+    },
+    "Drag them out anywhere later, or send them with AirDrop." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Después arrástralos a donde quieras o envíalos por AirDrop."
+          }
+        }
+      }
+    },
+    "Drag to move the column" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrastra para mover la columna"
+          }
+        }
+      }
+    },
+    "Drizzle" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llovizna"
+          }
+        }
+      }
+    },
+    "Drop Files on It" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suelta archivos en él"
+          }
+        }
+      }
+    },
+    "Drop files here to keep them handy" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suelta archivos aquí para tenerlos a mano"
+          }
+        }
+      }
+    },
+    "Drop here to take it off the Home tab" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suéltalo aquí para quitarlo de la pestaña Inicio"
+          }
+        }
+      }
+    },
+    "Drop it on the System Audio Recording Only list to allow it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suéltalo en la lista “Solo grabación de audio del sistema” para permitirlo."
+          }
+        }
+      }
+    },
+    "Dropping it there allows %@." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al soltarlo ahí, se permite %@."
+          }
+        }
+      }
+    },
+    "DyNotch" : {
+      "shouldTranslate" : false
+    },
+    "DyNotch %@ is available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DyNotch %@ ya está disponible"
+          }
+        }
+      }
+    },
+    "DyNotch Settings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes de DyNotch"
+          }
+        }
+      }
+    },
+    "DyNotch is up to date" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DyNotch está actualizado"
+          }
+        }
+      }
+    },
+    "DyNotch keeps everything on your Mac. Weather requests send only coordinates to Open-Meteo." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DyNotch lo guarda todo en tu Mac. Las consultas del tiempo solo envían coordenadas a Open-Meteo."
+          }
+        }
+      }
+    },
+    "DyNotch lives in your notch now. A few more things to know:" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DyNotch ya vive en tu notch. Unas cuantas cosas más que conviene saber:"
+          }
+        }
+      }
+    },
+    "Enjoying DyNotch?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Te gusta DyNotch?"
+          }
+        }
+      }
+    },
+    "Every widget is on the Home tab. Drag one here to take it off." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los widgets están en la pestaña Inicio. Arrastra uno aquí para quitarlo."
+          }
+        }
+      }
+    },
+    "Everything is allowed" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo está permitido"
+          }
+        }
+      }
+    },
+    "Fahrenheit" : {
+      "shouldTranslate" : false
+    },
+    "Feels like %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensación de %@"
+          }
+        }
+      }
+    },
+    "Files you drop on the notch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los archivos que sueltas en el notch"
+          }
+        }
+      }
+    },
+    "Flip the Picture" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voltear la imagen"
+          }
+        }
+      }
+    },
+    "Focus" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concentración"
+          }
+        }
+      }
+    },
+    "Fog" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niebla"
+          }
+        }
+      }
+    },
+    "Folds away 3 seconds after the video that's playing fills the screen, like YouTube in full screen. A browser window in full screen keeps it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se recoge 3 segundos después de que el vídeo que se reproduce ocupe toda la pantalla, como YouTube a pantalla completa. Con solo la ventana del navegador a pantalla completa, sigue ahí."
+          }
+        }
+      }
+    },
+    "Forecast" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previsión"
+          }
+        }
+      }
+    },
+    "Found it! Let go on Shelf or AirDrop." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Lo tienes! Suéltalo en Estante o en AirDrop."
+          }
+        }
+      }
+    },
+    "Freezing Drizzle" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llovizna helada"
+          }
+        }
+      }
+    },
+    "Freezing Rain" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lluvia helada"
+          }
+        }
+      }
+    },
+    "Full Disk Access" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acceso total al disco"
+          }
+        }
+      }
+    },
+    "General" : {
+      "shouldTranslate" : false
+    },
+    "Get Started" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar"
+          }
+        }
+      }
+    },
+    "GitHub didn't answer. Check your internet connection and try again." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub no ha respondido. Comprueba tu conexión a internet e inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "H:%@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M:%@"
+          }
+        }
+      }
+    },
+    "H:%@  L:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "H:%1$@  L:%2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M:%@  m:%@"
+          }
+        }
+      }
+    },
+    "Haptic feedback on the trackpad" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Respuesta háptica en el trackpad"
+          }
+        }
+      }
+    },
+    "Heavy Rain" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lluvia intensa"
+          }
+        }
+      }
+    },
+    "Heavy Showers" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chubascos fuertes"
+          }
+        }
+      }
+    },
+    "Heavy Snow" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nevada intensa"
+          }
+        }
+      }
+    },
+    "Hide during full-screen videos" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar durante vídeos a pantalla completa"
+          }
+        }
+      }
+    },
+    "Hide in full-screen apps" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar en apps a pantalla completa"
+          }
+        }
+      }
+    },
+    "Hold %@ with the brightness keys for the keyboard backlight." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén pulsada %@ con las teclas de brillo para la retroiluminación del teclado."
+          }
+        }
+      }
+    },
+    "Hold ⇧⌥ while pressing the keys for finer steps." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén pulsadas ⇧⌥ al pulsar las teclas para ajustar con más precisión."
+          }
+        }
+      }
+    },
+    "Home" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicio"
+          }
+        }
+      }
+    },
+    "Hover" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pasar el puntero"
+          }
+        }
+      }
+    },
+    "Hover delay" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retardo al pasar el puntero"
+          }
+        }
+      }
+    },
+    "Hovering shows a small peek; click the notch to open it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al pasar el puntero se asoma un poco; haz clic en el notch para abrirlo."
+          }
+        }
+      }
+    },
+    "Image %@" : {
+      "comment" : "Name of an image file dropped on the Shelf",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagen %@"
+          }
+        }
+      }
+    },
+    "Images and text dropped on it are deleted; other files stay where they are." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las imágenes y los textos soltados en él se eliminan; los demás archivos se quedan donde están."
+          }
+        }
+      }
+    },
+    "In %lld min" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En %lld min"
+          }
+        }
+      }
+    },
+    "In %lld min · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "In %1$lld min · %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En %lld min · %@"
+          }
+        }
+      }
+    },
+    "It opens again right away, with Settings where you left it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se vuelve a abrir enseguida, con los Ajustes donde los dejaste."
+          }
+        }
+      }
+    },
+    "It's open source. A star helps others find it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es de código abierto. Una estrella ayuda a que otros lo encuentren."
+          }
+        }
+      }
+    },
+    "Join" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unirse"
+          }
+        }
+      }
+    },
+    "Join %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unirse a %@"
+          }
+        }
+      }
+    },
+    "Join meeting" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unirse a la reunión"
+          }
+        }
+      }
+    },
+    "Keep an indicator while Caps Lock is on" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantener un indicador mientras Bloq Mayús esté activado"
+          }
+        }
+      }
+    },
+    "Keyboard Backlight" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retroiluminación del teclado"
+          }
+        }
+      }
+    },
+    "Keyboard backlight" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retroiluminación del teclado"
+          }
+        }
+      }
+    },
+    "L:%@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "m:%@"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma"
+          }
+        }
+      }
+    },
+    "Lap" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuelta"
+          }
+        }
+      }
+    },
+    "Lap %lld" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuelta %lld"
+          }
+        }
+      }
+    },
+    "Large" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grande"
+          }
+        }
+      }
+    },
+    "Large makes the notch taller while the Camera tab shows." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grande hace el notch más alto mientras se muestra la pestaña Cámara."
+          }
+        }
+      }
+    },
+    "Larger Picture" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagen más grande"
+          }
+        }
+      }
+    },
+    "Last Used Tab" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última pestaña usada"
+          }
+        }
+      }
+    },
+    "Launch at login" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir al iniciar sesión"
+          }
+        }
+      }
+    },
+    "Layout" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disposición"
+          }
+        }
+      }
+    },
+    "Left Column" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Columna izquierda"
+          }
+        }
+      }
+    },
+    "Lets DyNotch see Focus mode changes. Optional." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permite a DyNotch ver los cambios de modo de concentración. Opcional."
+          }
+        }
+      }
+    },
+    "Light Rain" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lluvia ligera"
+          }
+        }
+      }
+    },
+    "Light Snow" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nevada ligera"
+          }
+        }
+      }
+    },
+    "Like an iPhone timer, the sound repeats until you click Stop, for up to 5 minutes." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como el temporizador del iPhone, el sonido se repite hasta que haces clic en Detener, durante un máximo de 5 minutos."
+          }
+        }
+      }
+    },
+    "Like the iPhone's Dynamic Island. Nothing is recorded, but macOS shows its purple dot while the bars listen." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como la Dynamic Island del iPhone. No se graba nada, pero macOS muestra su punto morado mientras las barras escuchan."
+          }
+        }
+      }
+    },
+    "Link %@" : {
+      "comment" : "Name of a link file dropped on the Shelf",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enlace %@"
+          }
+        }
+      }
+    },
+    "Live Activities" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actividades en directo"
+          }
+        }
+      }
+    },
+    "Location" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localización"
+          }
+        }
+      }
+    },
+    "Long Break" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descanso largo"
+          }
+        }
+      }
+    },
+    "Long break" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descanso largo"
+          }
+        }
+      }
+    },
+    "Looks for a newer version on GitHub." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca una versión más reciente en GitHub."
+          }
+        }
+      }
+    },
+    "Low Battery" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batería baja"
+          }
+        }
+      }
+    },
+    "MacBooks with Touch ID have no backlight keys. Hold the modifier and press the brightness keys instead, or use the slider." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los MacBook con Touch ID no tienen teclas de retroiluminación. Mantén pulsada la tecla modificadora y pulsa las teclas de brillo, o usa el regulador."
+          }
+        }
+      }
+    },
+    "Make it yours" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazlo tuyo"
+          }
+        }
+      }
+    },
+    "Makes the bars beside the notch move with the music. Nothing is recorded." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hace que las barras junto al notch se muevan con la música. No se graba nada."
+          }
+        }
+      }
+    },
+    "Media info unavailable" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información multimedia no disponible"
+          }
+        }
+      }
+    },
+    "Meetings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reuniones"
+          }
+        }
+      }
+    },
+    "Middle Column" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Columna central"
+          }
+        }
+      }
+    },
+    "Mirror" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espejo"
+          }
+        }
+      }
+    },
+    "Mirror the picture" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflejar la imagen"
+          }
+        }
+      }
+    },
+    "Mirrored" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflejada"
+          }
+        }
+      }
+    },
+    "Mostly Clear" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mayormente despejado"
+          }
+        }
+      }
+    },
+    "Move %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover %@"
+          }
+        }
+      }
+    },
+    "Move Between Tabs" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muévete entre pestañas"
+          }
+        }
+      }
+    },
+    "Move Column Left" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover columna a la izquierda"
+          }
+        }
+      }
+    },
+    "Move Column Right" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover columna a la derecha"
+          }
+        }
+      }
+    },
+    "Move Down" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bajar"
+          }
+        }
+      }
+    },
+    "Move Left" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover a la izquierda"
+          }
+        }
+      }
+    },
+    "Move Right" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover a la derecha"
+          }
+        }
+      }
+    },
+    "Move Up" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subir"
+          }
+        }
+      }
+    },
+    "Move or remove %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover o quitar %@"
+          }
+        }
+      }
+    },
+    "Move the pointer up to the notch at the top of your screen: it opens, and closes again when the pointer leaves." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lleva el puntero al notch, en la parte superior de la pantalla: se abre, y se vuelve a cerrar cuando el puntero se aleja."
+          }
+        }
+      }
+    },
+    "Music" : {
+      "comment" : "The Music app",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Música"
+          }
+        }
+      }
+    },
+    "Needs Accessibility to replace the system HUD." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Accesibilidad para sustituir el indicador del sistema."
+          }
+        }
+      }
+    },
+    "Needs Accessibility to see Caps Lock." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Accesibilidad para ver Bloq Mayús."
+          }
+        }
+      }
+    },
+    "Needs Accessibility to show the volume here." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Accesibilidad para mostrar aquí el volumen."
+          }
+        }
+      }
+    },
+    "Needs Bluetooth to see devices connect." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Bluetooth para ver cuándo se conectan los dispositivos."
+          }
+        }
+      }
+    },
+    "Needs Calendars to show your events." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Calendarios para mostrar tus eventos."
+          }
+        }
+      }
+    },
+    "Needs Camera to show the picture." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Cámara para mostrar la imagen."
+          }
+        }
+      }
+    },
+    "Needs Full Disk Access to read Focus status." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Acceso total al disco para leer el estado de concentración."
+          }
+        }
+      }
+    },
+    "Needs Location to find where you are." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Localización para saber dónde estás."
+          }
+        }
+      }
+    },
+    "Needs Notifications to alert you." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Notificaciones para avisarte."
+          }
+        }
+      }
+    },
+    "Needs Reminders to show what's due." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Recordatorios para mostrar lo pendiente."
+          }
+        }
+      }
+    },
+    "Needs System Audio Recording; until then the bars keep a steady rhythm." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesita Grabación de audio del sistema; hasta entonces, las barras siguen un ritmo constante."
+          }
+        }
+      }
+    },
+    "Needs access" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin acceso"
+          }
+        }
+      }
+    },
+    "New to DyNotch?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Primera vez en DyNotch?"
+          }
+        }
+      }
+    },
+    "Next Hours" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximas horas"
+          }
+        }
+      }
+    },
+    "No Home widgets" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin widgets en Inicio"
+          }
+        }
+      }
+    },
+    "No battery" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin batería"
+          }
+        }
+      }
+    },
+    "No laps yet" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay vueltas"
+          }
+        }
+      }
+    },
+    "No location" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin ubicación"
+          }
+        }
+      }
+    },
+    "No places match “%@”. Check the spelling, or try a larger city nearby." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ningún lugar coincide con “%@”. Revisa la ortografía o prueba con una ciudad más grande cercana."
+          }
+        }
+      }
+    },
+    "No upcoming events" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay próximos eventos"
+          }
+        }
+      }
+    },
+    "Nothing Playing" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nada en reproducción"
+          }
+        }
+      }
+    },
+    "Notifications" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones"
+          }
+        }
+      }
+    },
+    "Now" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora"
+          }
+        }
+      }
+    },
+    "Now Playing" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En reproducción"
+          }
+        }
+      }
+    },
+    "Now Playing, the clock, weather and your agenda" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo que suena, el reloj, el tiempo y tu agenda"
+          }
+        }
+      }
+    },
+    "Now · until %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora · hasta %@"
+          }
+        }
+      }
+    },
+    "OCTOBER" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OCTUBRE"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        }
+      }
+    },
+    "Off" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivado"
+          }
+        }
+      }
+    },
+    "Off, it shows you as others see you. Clicking the picture in the notch flips it too." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivado, te muestra como te ven los demás. Al hacer clic en la imagen del notch también se voltea."
+          }
+        }
+      }
+    },
+    "Offer to join online meetings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofrecer unirse a reuniones en línea"
+          }
+        }
+      }
+    },
+    "On" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activado"
+          }
+        }
+      }
+    },
+    "On Battery" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Con batería"
+          }
+        }
+      }
+    },
+    "On battery" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Con batería"
+          }
+        }
+      }
+    },
+    "On power adapter" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Con adaptador de corriente"
+          }
+        }
+      }
+    },
+    "Online meeting" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reunión en línea"
+          }
+        }
+      }
+    },
+    "Open" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir"
+          }
+        }
+      }
+    },
+    "Open %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir %@"
+          }
+        }
+      }
+    },
+    "Open %lld Items" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir %lld ítems"
+          }
+        }
+      }
+    },
+    "Open Calendar" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Calendario"
+          }
+        }
+      }
+    },
+    "Open DyNotch at login" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir DyNotch al iniciar sesión"
+          }
+        }
+      }
+    },
+    "Open Layout" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Disposición"
+          }
+        }
+      }
+    },
+    "Open Notch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir notch"
+          }
+        }
+      }
+    },
+    "Open Reminders" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Recordatorios"
+          }
+        }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Ajustes"
+          }
+        }
+      }
+    },
+    "Open app" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir la app"
+          }
+        }
+      }
+    },
+    "Open on" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir en"
+          }
+        }
+      }
+    },
+    "Open the Notch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre el notch"
+          }
+        }
+      }
+    },
+    "Open the notch and click the icons in its top-left corner to move between %@." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre el notch y haz clic en los iconos de su esquina superior izquierda para moverte entre %@."
+          }
+        }
+      }
+    },
+    "Open the notch and swipe left or right over it with three fingers to move between %@, or click their icons in its top-left corner." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre el notch y desliza tres dedos hacia la izquierda o la derecha sobre él para moverte entre %@, o haz clic en sus iconos de la esquina superior izquierda."
+          }
+        }
+      }
+    },
+    "Open the notch and swipe left or right over it with three fingers to move between %@." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre el notch y desliza tres dedos hacia la izquierda o la derecha sobre él para moverte entre %@."
+          }
+        }
+      }
+    },
+    "Open the notch and swipe left or right over it with two fingers to move between %@, or click their icons in its top-left corner." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre el notch y desliza dos dedos hacia la izquierda o la derecha sobre él para moverte entre %@, o haz clic en sus iconos de la esquina superior izquierda."
+          }
+        }
+      }
+    },
+    "Open the notch and swipe left or right over it with two fingers to move between %@." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre el notch y desliza dos dedos hacia la izquierda o la derecha sobre él para moverte entre %@."
+          }
+        }
+      }
+    },
+    "Open the notch by" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir el notch al"
+          }
+        }
+      }
+    },
+    "Open-Meteo.com · CC BY 4.0" : {
+      "shouldTranslate" : false
+    },
+    "Opened! Move the pointer away to close it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Abierto! Aleja el puntero para cerrarlo."
+          }
+        }
+      }
+    },
+    "Opening" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apertura"
+          }
+        }
+      }
+    },
+    "Order" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orden"
+          }
+        }
+      }
+    },
+    "Over DDC/CI" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por DDC/CI"
+          }
+        }
+      }
+    },
+    "Partly Cloudy" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parcialmente nublado"
+          }
+        }
+      }
+    },
+    "Pause" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausar"
+          }
+        }
+      }
+    },
+    "Paused" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En pausa"
+          }
+        }
+      }
+    },
+    "Permissions" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permisos"
+          }
+        }
+      }
+    },
+    "Permissions…" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permisos…"
+          }
+        }
+      }
+    },
+    "Picture size" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño de la imagen"
+          }
+        }
+      }
+    },
+    "Play" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reproducir"
+          }
+        }
+      }
+    },
+    "Play a sound" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reproducir un sonido"
+          }
+        }
+      }
+    },
+    "Player" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reproductor"
+          }
+        }
+      }
+    },
+    "Plugged in" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enchufado"
+          }
+        }
+      }
+    },
+    "Pomodoro" : {
+      "shouldTranslate" : false
+    },
+    "Powers the camera mirror tab." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hace funcionar la pestaña del espejo de cámara."
+          }
+        }
+      }
+    },
+    "Press the volume or brightness keys: the level shows in the notch, where you can drag it too." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulsa las teclas de volumen o de brillo: el nivel aparece en el notch, donde también puedes arrastrarlo."
+          }
+        }
+      }
+    },
+    "Quick Look" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista rápida"
+          }
+        }
+      }
+    },
+    "Quick Look %lld Items" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista rápida de %lld ítems"
+          }
+        }
+      }
+    },
+    "Quit" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salir"
+          }
+        }
+      }
+    },
+    "Quit DyNotch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salir de DyNotch"
+          }
+        }
+      }
+    },
+    "Rain" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lluvia"
+          }
+        }
+      }
+    },
+    "Refresh Now" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar ahora"
+          }
+        }
+      }
+    },
+    "Release Notes" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notas de la versión"
+          }
+        }
+      }
+    },
+    "Release to take it off the Home tab" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suelta para quitarlo de la pestaña Inicio"
+          }
+        }
+      }
+    },
+    "Reminder Lists" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listas de recordatorios"
+          }
+        }
+      }
+    },
+    "Reminders" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorios"
+          }
+        }
+      }
+    },
+    "Remove" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar"
+          }
+        }
+      }
+    },
+    "Remove %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar %@"
+          }
+        }
+      }
+    },
+    "Remove %lld Items from Shelf" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar %lld ítems del Estante"
+          }
+        }
+      }
+    },
+    "Remove %lld seconds" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar %lld segundos"
+          }
+        }
+      }
+    },
+    "Remove a minute" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar un minuto"
+          }
+        }
+      }
+    },
+    "Remove everything from the Shelf, or the items dropped on it" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar todo del Estante, o los ítems que se suelten aquí"
+          }
+        }
+      }
+    },
+    "Remove from Shelf" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar del Estante"
+          }
+        }
+      }
+    },
+    "Replace the System HUD For" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sustituir el indicador del sistema para"
+          }
+        }
+      }
+    },
+    "Replaces the volume and brightness HUD and shows Caps Lock." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sustituye el indicador de volumen y brillo, y muestra Bloq Mayús."
+          }
+        }
+      }
+    },
+    "Required" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obligatorio"
+          }
+        }
+      }
+    },
+    "Reset" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reiniciar"
+          }
+        }
+      }
+    },
+    "Restart DyNotch to change the language" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reinicia DyNotch para cambiar el idioma"
+          }
+        }
+      }
+    },
+    "Restart Now" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reiniciar ahora"
+          }
+        }
+      }
+    },
+    "Resume" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reanudar"
+          }
+        }
+      }
+    },
+    "Retry" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
+          }
+        }
+      }
+    },
+    "Right Column" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Columna derecha"
+          }
+        }
+      }
+    },
+    "Ring until stopped" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonar hasta detenerlo"
+          }
+        }
+      }
+    },
+    "Round %lld of %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Round %1$lld of %2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ronda %lld de %lld"
+          }
+        }
+      }
+    },
+    "Rounds before a long break" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rondas antes de un descanso largo"
+          }
+        }
+      }
+    },
+    "Search for a city" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca una ciudad"
+          }
+        }
+      }
+    },
+    "Search for another city" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca otra ciudad"
+          }
+        }
+      }
+    },
+    "Search time zones, e.g. Tokyo" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca zonas horarias, p. ej., Tokio"
+          }
+        }
+      }
+    },
+    "See yourself before a call" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mírate antes de una llamada"
+          }
+        }
+      }
+    },
+    "Send a notification" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar una notificación"
+          }
+        }
+      }
+    },
+    "Send everything on the Shelf with AirDrop" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar todo lo del Estante por AirDrop"
+          }
+        }
+      }
+    },
+    "Send the selected items with AirDrop" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar los ítems seleccionados por AirDrop"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes"
+          }
+        }
+      }
+    },
+    "Settings are a click away" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los ajustes, a un clic"
+          }
+        }
+      }
+    },
+    "Settings button" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Botón de ajustes"
+          }
+        }
+      }
+    },
+    "Settings…" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes…"
+          }
+        }
+      }
+    },
+    "Share" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir"
+          }
+        }
+      }
+    },
+    "Share everything on the Shelf" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir todo lo del Estante"
+          }
+        }
+      }
+    },
+    "Share the selected items" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir los ítems seleccionados"
+          }
+        }
+      }
+    },
+    "Share…" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir…"
+          }
+        }
+      }
+    },
+    "Shelf" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estante"
+          }
+        }
+      }
+    },
+    "Shelf & AirDrop" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estante y AirDrop"
+          }
+        }
+      }
+    },
+    "Short Break" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descanso corto"
+          }
+        }
+      }
+    },
+    "Short break" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descanso corto"
+          }
+        }
+      }
+    },
+    "Show More" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar más"
+          }
+        }
+      }
+    },
+    "Show a notch on external displays" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar un notch en pantallas externas"
+          }
+        }
+      }
+    },
+    "Show in Finder" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar en el Finder"
+          }
+        }
+      }
+    },
+    "Show in the Notch When" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar en el notch cuando"
+          }
+        }
+      }
+    },
+    "Show menu bar icon" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar icono en la barra de menús"
+          }
+        }
+      }
+    },
+    "Show music while it plays" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar la música mientras suena"
+          }
+        }
+      }
+    },
+    "Show the next song when it changes" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar la siguiente canción cuando cambie"
+          }
+        }
+      }
+    },
+    "Show the time when nothing else is going on" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar la hora cuando no pase nada más"
+          }
+        }
+      }
+    },
+    "Show today's reminders" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra los recordatorios de hoy"
+          }
+        }
+      }
+    },
+    "Show your upcoming events" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra tus próximos eventos"
+          }
+        }
+      }
+    },
+    "Showers" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chubascos"
+          }
+        }
+      }
+    },
+    "Shows the weather where you are." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra el tiempo donde estás."
+          }
+        }
+      }
+    },
+    "Shows today's reminders so you can tick them off." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra los recordatorios de hoy para que puedas marcarlos."
+          }
+        }
+      }
+    },
+    "Shows upcoming events and the meeting Join button." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra los próximos eventos y el botón Unirse de las reuniones."
+          }
+        }
+      }
+    },
+    "Shows when AirPods and other devices connect." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra cuándo se conectan los AirPods y otros dispositivos."
+          }
+        }
+      }
+    },
+    "Skip" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omitir"
+          }
+        }
+      }
+    },
+    "Skip to %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saltar a %@"
+          }
+        }
+      }
+    },
+    "Skipping drops down its cover, title and artist." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al saltar de canción, se despliegan su portada, título y artista."
+          }
+        }
+      }
+    },
+    "Sleep" : {
+      "comment" : "The Sleep Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dormir"
+          }
+        }
+      }
+    },
+    "Small" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pequeño"
+          }
+        }
+      }
+    },
+    "Smaller Picture" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagen más pequeña"
+          }
+        }
+      }
+    },
+    "Snow" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieve"
+          }
+        }
+      }
+    },
+    "Snow Grains" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Granos de nieve"
+          }
+        }
+      }
+    },
+    "Snow Showers" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chubascos de nieve"
+          }
+        }
+      }
+    },
+    "So the notch is ready whenever your Mac is." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para que el notch esté listo en cuanto lo esté tu Mac."
+          }
+        }
+      }
+    },
+    "Song changes and online meetings are in Now Playing and Calendar & Reminders." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los cambios de canción y las reuniones en línea están en En reproducción y en Calendario y Recordatorios."
+          }
+        }
+      }
+    },
+    "Standard" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estándar"
+          }
+        }
+      }
+    },
+    "Star on GitHub" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dar una estrella en GitHub"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar"
+          }
+        }
+      }
+    },
+    "Start a %@ timer" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar un temporizador de %@"
+          }
+        }
+      }
+    },
+    "Start over" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar de nuevo"
+          }
+        }
+      }
+    },
+    "Step %lld of %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step %1$lld of %2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paso %lld de %lld"
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detener"
+          }
+        }
+      }
+    },
+    "Stopwatch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronómetro"
+          }
+        }
+      }
+    },
+    "Swipe between tabs" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deslizar entre pestañas"
+          }
+        }
+      }
+    },
+    "Swipe down to open, up to close" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deslizar hacia abajo para abrir y hacia arriba para cerrar"
+          }
+        }
+      }
+    },
+    "Swipe over the notch to move between them." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desliza sobre el notch para moverte entre ellas."
+          }
+        }
+      }
+    },
+    "Switching it on allows %@." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al activarlo, se permite %@."
+          }
+        }
+      }
+    },
+    "System Audio Recording" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grabación de audio del sistema"
+          }
+        }
+      }
+    },
+    "Tabs" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pestañas"
+          }
+        }
+      }
+    },
+    "Temperature" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatura"
+          }
+        }
+      }
+    },
+    "Text %@" : {
+      "comment" : "Name of a text file dropped on the Shelf",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texto %@"
+          }
+        }
+      }
+    },
+    "That's it. Each tab keeps its place." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eso es. Cada pestaña mantiene su sitio."
+          }
+        }
+      }
+    },
+    "That's the new HUD." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este es el nuevo indicador."
+          }
+        }
+      }
+    },
+    "The camera turns off as soon as the notch closes." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La cámara se apaga en cuanto se cierra el notch."
+          }
+        }
+      }
+    },
+    "The files themselves stay where they are." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los archivos en sí se quedan donde están."
+          }
+        }
+      }
+    },
+    "The notch goes back to normal until you open DyNotch again." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El notch vuelve a la normalidad hasta que abras DyNotch de nuevo."
+          }
+        }
+      }
+    },
+    "Then turn on Allow Notifications." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Después, activa “Permitir notificaciones”."
+          }
+        }
+      }
+    },
+    "This output's volume can't be changed" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El volumen de esta salida no se puede cambiar"
+          }
+        }
+      }
+    },
+    "This removes all %lld items from the Shelf." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se quitarán los %lld ítems del Estante."
+          }
+        }
+      }
+    },
+    "This removes the item from the Shelf." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se quitará el ítem del Estante."
+          }
+        }
+      }
+    },
+    "Three-finger drag is on, so the swipe would drag too. Turn it off in Accessibility settings › Pointer Control, or swipe with two fingers." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Arrastrar con tres dedos” está activado, así que el gesto también arrastraría. Desactívalo en los ajustes de Accesibilidad › Control del puntero, o desliza con dos dedos."
+          }
+        }
+      }
+    },
+    "Thunderstorm" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tormenta"
+          }
+        }
+      }
+    },
+    "Thunderstorm with Hail" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tormenta con granizo"
+          }
+        }
+      }
+    },
+    "Time for a Break" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora de descansar"
+          }
+        }
+      }
+    },
+    "Timer" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temporizador"
+          }
+        }
+      }
+    },
+    "Timer Done" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temporizador terminado"
+          }
+        }
+      }
+    },
+    "Timer, stopwatch and Pomodoro" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temporizador, cronómetro y Pomodoro"
+          }
+        }
+      }
+    },
+    "Timers" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temporizadores"
+          }
+        }
+      }
+    },
+    "Tint the player with the album artwork's color" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teñir el reproductor con el color de la portada del álbum"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        }
+      }
+    },
+    "Tomorrow" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana"
+          }
+        }
+      }
+    },
+    "Top Bar" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barra superior"
+          }
+        }
+      }
+    },
+    "Try Again" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
+          }
+        }
+      }
+    },
+    "Try it now" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pruébalo ahora"
+          }
+        }
+      }
+    },
+    "Tuesday 13" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Martes 13"
+          }
+        }
+      }
+    },
+    "Turn Back" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dar la vuelta"
+          }
+        }
+      }
+    },
+    "Turn on DyNotch in the list above" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activa DyNotch en la lista de arriba"
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desconocido"
+          }
+        }
+      }
+    },
+    "Untitled" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin título"
+          }
+        }
+      }
+    },
+    "Up next: %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A continuación: %@"
+          }
+        }
+      }
+    },
+    "Up next: %@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Up next: %1$@ · %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A continuación: %@ · %@"
+          }
+        }
+      }
+    },
+    "Up to two are shown on the Clock card." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tarjeta Reloj muestra hasta dos."
+          }
+        }
+      }
+    },
+    "Upcoming" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximos"
+          }
+        }
+      }
+    },
+    "Updates" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizaciones"
+          }
+        }
+      }
+    },
+    "Use DyNotch's menu bar icon, or click the clock in the open notch." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa el icono de DyNotch en la barra de menús, o haz clic en el reloj del notch abierto."
+          }
+        }
+      }
+    },
+    "Use DyNotch's menu bar icon, or the gear in the open notch." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa el icono de DyNotch en la barra de menús, o el engranaje del notch abierto."
+          }
+        }
+      }
+    },
+    "Use My Location" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar mi ubicación"
+          }
+        }
+      }
+    },
+    "Use my current location" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar mi ubicación actual"
+          }
+        }
+      }
+    },
+    "Version %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión %@"
+          }
+        }
+      }
+    },
+    "Version %@ is the latest." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La versión %@ es la más reciente."
+          }
+        }
+      }
+    },
+    "Volume" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volumen"
+          }
+        }
+      }
+    },
+    "Volume & Brightness" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volumen y brillo"
+          }
+        }
+      }
+    },
+    "Volume HUD" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volumen y brillo"
+          }
+        }
+      }
+    },
+    "Volume and brightness HUDs still appear." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los indicadores de volumen y brillo se siguen mostrando."
+          }
+        }
+      }
+    },
+    "Weather" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo"
+          }
+        }
+      }
+    },
+    "Weather data" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos meteorológicos"
+          }
+        }
+      }
+    },
+    "Weather data by Open-Meteo.com (CC BY 4.0)." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos meteorológicos de Open-Meteo.com (CC BY 4.0)."
+          }
+        }
+      }
+    },
+    "Weather needs your location or a city" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El tiempo necesita tu ubicación o una ciudad"
+          }
+        }
+      }
+    },
+    "Welcome Tour…" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visita de bienvenida…"
+          }
+        }
+      }
+    },
+    "Welcome to DyNotch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te damos la bienvenida a DyNotch"
+          }
+        }
+      }
+    },
+    "When a Timer Ends" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuando termina un temporizador"
+          }
+        }
+      }
+    },
+    "When nothing is playing, offer to open" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si no suena nada, ofrecer abrir"
+          }
+        }
+      }
+    },
+    "With Three Fingers" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Con tres dedos"
+          }
+        }
+      }
+    },
+    "With Two Fingers" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Con dos dedos"
+          }
+        }
+      }
+    },
+    "With two fingers over the notch." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Con dos dedos sobre el notch."
+          }
+        }
+      }
+    },
+    "Without it, click the clock on Home to open Settings." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin él, haz clic en el reloj de Inicio para abrir los Ajustes."
+          }
+        }
+      }
+    },
+    "Without it, open DyNotch again from Finder or Spotlight to get back to Settings." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin él, vuelve a abrir DyNotch desde el Finder o Spotlight para volver a los Ajustes."
+          }
+        }
+      }
+    },
+    "Without it, show the Home tab to open Settings by clicking its clock." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin él, muestra la pestaña Inicio para abrir los Ajustes haciendo clic en su reloj."
+          }
+        }
+      }
+    },
+    "World Clocks" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relojes mundiales"
+          }
+        }
+      }
+    },
+    "You can also drag them up and down in the notch's Timers tab." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También puedes arrastrarlos arriba y abajo en la pestaña Temporizadores del notch."
+          }
+        }
+      }
+    },
+    "You can also swipe down over it with two fingers, and up to close it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También puedes deslizar dos dedos hacia abajo sobre él, y hacia arriba para cerrarlo."
+          }
+        }
+      }
+    },
+    "You can change these later in Settings › Permissions." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puedes cambiarlos más tarde en Ajustes › Permisos."
+          }
+        }
+      }
+    },
+    "You can close System Settings." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya puedes cerrar Ajustes del Sistema."
+          }
+        }
+      }
+    },
+    "You have version %@." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tienes la versión %@."
+          }
+        }
+      }
+    },
+    "You're All Set" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo listo"
+          }
+        }
+      }
+    },
+    "Your notch becomes a Dynamic Island, with your music, calendar, weather, timers, a shelf for files and the volume, all in Liquid Glass that blends into the hardware." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu notch se convierte en una Dynamic Island, con tu música, el calendario, el tiempo, temporizadores, un estante para archivos y el volumen, todo en Liquid Glass que se funde con el hardware."
+          }
+        }
+      }
+    },
+    "Your timer finished" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ha terminado tu temporizador"
+          }
+        }
+      }
+    },
+    "Zoom, Meet, Teams, Webex and FaceTime links in events pop up with Join 5 minutes before and when they start." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los enlaces de Zoom, Meet, Teams, Webex y FaceTime de los eventos aparecen con Unirse 5 minutos antes y al empezar."
+          }
+        }
+      }
+    },
+    "in %lld min" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en %lld min"
+          }
+        }
+      }
+    },
+    "macOS also swipes between full-screen apps with three fingers. Set that to four fingers in Trackpad settings › More Gestures." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS también cambia entre apps a pantalla completa con tres dedos. Cámbialo a cuatro dedos en los ajustes de Trackpad › Más gestos."
+          }
+        }
+      }
+    },
+    "macOS has no public API for Focus. DyNotch reads the Focus database, which may miss some automatic schedules." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS no tiene una API pública para los modos de concentración. DyNotch lee la base de datos de concentración, que puede no registrar algunas programaciones automáticas."
+          }
+        }
+      }
+    },
+    "mediaremote-adapter" : {
+      "shouldTranslate" : false
+    },
+    "min" : {
+      "shouldTranslate" : false
+    },
+    "now" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ahora"
+          }
+        }
+      }
+    },
+    "weather.clear" : {
+      "comment" : "Weather conditions: a clear sky",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Clear"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Despejado"
+          }
+        }
+      }
+    },
+    "—" : {
+      "shouldTranslate" : false
+    },
+    "⌃ Control" : {
+      "shouldTranslate" : false
+    },
+    "⌘ Command" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ Comando"
+          }
+        }
+      }
+    },
+    "⌥ Option" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌥ Opción"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
