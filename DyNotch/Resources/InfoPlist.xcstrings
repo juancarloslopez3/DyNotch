@@ -1,6 +1,30 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "DyNotch"
+          }
+        }
+      }
+    },
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "DyNotch"
+          }
+        }
+      }
+    },
     "NSAudioCaptureUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -65,6 +89,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DyNotch muestra un espejo de cámara para que veas qué aspecto tienes antes de una llamada. El vídeo nunca sale de tu Mac."
+          }
+        }
+      }
+    },
+    "NSHumanReadableCopyright" : {
+      "comment" : "Copyright (human-readable)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copyright © 2026 Juan Carlos López. MIT License."
           }
         }
       }

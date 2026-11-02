@@ -8,6 +8,9 @@ import SwiftUI
 nonisolated struct NotchShape: Shape {
     var topRadius: CGFloat
     var bottomRadius: CGFloat
+    /// Leaves the top edge, along the screen's, out of the path, so a stroke traces only the
+    /// ears, sides and bottom.
+    var isOpenAtTop = false
 
     var animatableData: AnimatablePair<CGFloat, CGFloat> {
         get { AnimatablePair(topRadius, bottomRadius) }
@@ -32,7 +35,7 @@ nonisolated struct NotchShape: Shape {
         path.addQuadCurve(to: CGPoint(x: right, y: rect.maxY - bottom), control: CGPoint(x: right, y: rect.maxY))
         path.addLine(to: CGPoint(x: right, y: rect.minY + top))
         path.addQuadCurve(to: CGPoint(x: rect.maxX, y: rect.minY), control: CGPoint(x: right, y: rect.minY))
-        path.closeSubpath()
+        if !isOpenAtTop { path.closeSubpath() }
         return path
     }
 }

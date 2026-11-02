@@ -9,8 +9,10 @@ struct CompactActivityView: View {
 
     var body: some View {
         // The band beside the notch grows with the shape while hovered, so content stays centred in it.
-        let band = CGSize(width: notch.width, height: notch.height + (isHovering ? NotchMetrics.compactHoverGrowth.height : 0))
+        let band = CGSize(width: notch.width, height: notch.height + (isHovering ? NotchMetrics.hoverGrowth.height : 0))
         switch activity {
+        case .call:
+            CompactCallView(notch: band, isHovering: isHovering)
         case .media:
             CompactMediaView(notch: band, isHovering: isHovering)
         case .timer:
@@ -28,7 +30,7 @@ struct CompactActivityView: View {
                 TimelineView(.everyMinute) { context in
                     Text(context.date, format: .dateTime.weekday(.abbreviated))
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.7))
+                        .foregroundStyle(.white)
                 }
             } trailing: {
                 TimelineView(.everyMinute) { context in
@@ -49,6 +51,10 @@ struct MinimalActivityView: View {
 
     var body: some View {
         switch activity {
+        case .call:
+            Image(systemName: "phone.fill")
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(CallStyle.green)
         case .media:
             let cover = (size.height * 0.7).rounded()
             CompactCoverView(size: cover, cornerRadius: cover / 2)
@@ -114,6 +120,7 @@ struct LiveActivityView: View {
                     Text(focus.name)
                         .font(.system(size: 12, weight: .semibold))
                         .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                 }
                 .padding(.horizontal, 10)
             } trailing: {

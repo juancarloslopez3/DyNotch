@@ -13,6 +13,8 @@ struct ActivityBubble: View {
     let ear: CGFloat
     /// The pointer is over it: it grows a little and its rim lights up, ready for a click.
     let isHovered: Bool
+    /// Settings › Live Activities: a light rim around it, as around the notch.
+    let hasRim: Bool
     let open: () -> Void
 
     /// How far into the notch the bubble's space reaches.
@@ -33,6 +35,7 @@ struct ActivityBubble: View {
         // Room for an oval with some to spare, so a bubble overshooting as it settles isn't cut.
         .frame(width: Self.notchEnd + NotchMetrics.bubbleGap + notch.height * 2, height: notch.height, alignment: .topLeading)
         .environment(\.isBubbleHovered, isHovered)
+        .environment(\.hasBubbleRim, hasRim)
         .animation(.notchQuick, value: isHovered)
         .animation(activity == nil ? .bubbleMerge : .bubbleSplit, value: activity)
     }
@@ -41,6 +44,8 @@ struct ActivityBubble: View {
 private extension EnvironmentValues {
     /// The pointer is over the bubble, for the drop that draws it.
     @Entry var isBubbleHovered = false
+    /// The bubble has a rim, for the drop that draws it.
+    @Entry var hasBubbleRim = true
 }
 
 /// A bubble coming out of the notch's end as a drop, or going back in.
@@ -64,6 +69,7 @@ private struct BubbleDrop: ViewModifier, Animatable {
     let ear: CGFloat
     let size: CGSize
     @Environment(\.isBubbleHovered) private var isHovered
+    @Environment(\.hasBubbleRim) private var hasRim
 
     var animatableData: CGFloat {
         get { progress }
@@ -72,6 +78,7 @@ private struct BubbleDrop: ViewModifier, Animatable {
 
     func body(content: Content) -> some View {
         let scale = (0.5 + 0.5 * progress) * (isHovered ? 1.08 : 1)
+        let rim = hasRim ? (isHovered ? NotchMetrics.hoveredRimOpacity : NotchMetrics.rimOpacity) : 0
         // Stretched tall while it's pulled out, so it comes away from the whole end of the notch
         // (its ear too) rather than from under it.
         let stretch = sin(min(max(progress, 0), 1) * .pi)
@@ -105,7 +112,7 @@ private struct BubbleDrop: ViewModifier, Animatable {
             // A light rim, so the bubble shows on a dark menu bar too. It comes on as the drop
             // pinches off, rather than ringing the neck.
             Capsule()
-                .strokeBorder(.white.opacity((isHovered ? 0.55 : 0.3) * min(max(progress * 10 - 9, 0), 1)), lineWidth: 1)
+                .strokeBorder(.white.opacity(rim * min(max(progress * 10 - 9, 0), 1)), lineWidth: 1)
                 .frame(width: width, height: height)
                 .position(x: center.x, y: center.y)
                 .allowsHitTesting(false)

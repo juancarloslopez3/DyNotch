@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import AppKit
 import SwiftUI
 
 struct FocusEvent: Equatable {
@@ -9,6 +10,12 @@ struct FocusEvent: Equatable {
     var isOn: Bool
     /// Focus changed, but macOS won't let DyNotch read to what (no Full Disk Access).
     var needsAccess = false
+
+    /// Width of each wing that fits the name beside the notch (icon, name, margins), up to a cap.
+    var wing: CGFloat {
+        let text = (name as NSString).size(withAttributes: [.font: NSFont.systemFont(ofSize: 12, weight: .semibold)]).width
+        return min(max(110, (text + 10 + 13 + 6 + 12).rounded(.up)), 200)
+    }
 
     static let unreadable = FocusEvent(name: String(localized: "Focus"), symbol: "moon.fill", color: .indigo, isOn: false, needsAccess: true)
 }
@@ -95,15 +102,53 @@ final class FocusMonitor {
         if let modes,
            let modesJSON = try? JSONSerialization.jsonObject(with: modes),
            let mode = findMode(identifier, in: modesJSON) {
-            name = mode["name"] as? String ?? name
+            name = builtInName(identifier) ?? mode["name"] as? String ?? name
             symbol = mode["symbolImageName"] as? String ?? symbol
             color = tint(mode["tintColorName"] as? String) ?? color
+            if let style = builtInStyle(identifier) { (symbol, color) = style }
+        } else if let builtIn = builtInName(identifier) {
+            name = builtIn
+            if let style = builtInStyle(identifier) { (symbol, color) = style }
         } else if identifier == "com.apple.sleep.sleep-mode" {
             (name, symbol, color) = (String(localized: "Sleep", comment: "The Sleep Focus"), "bed.double.fill", .teal)
         } else if identifier.hasSuffix(".default") {
             name = String(localized: "Do Not Disturb")
         }
         return FocusEvent(name: name, symbol: symbol, color: color, isOn: true)
+    }
+
+    /// Apple's icon and colour for its own Focus modes.
+    static func builtInStyle(_ identifier: String) -> (String, Color)? {
+        switch identifier {
+        case "com.apple.donotdisturb.mode.default": ("moon.fill", Color(red: 0.39, green: 0.36, blue: 0.96))
+        case "com.apple.sleep.sleep-mode": ("bed.double.fill", Color(red: 0.39, green: 0.36, blue: 0.96))
+        case "com.apple.focus.work": ("person.text.rectangle.fill", Color(red: 0.10, green: 0.78, blue: 0.80))
+        case "com.apple.focus.personal-time": ("person.fill", Color(red: 0.80, green: 0.25, blue: 0.90))
+        case "com.apple.donotdisturb.mode.driving": ("car.fill", Color(red: 0.39, green: 0.36, blue: 0.96))
+        case "com.apple.focus.fitness": ("figure.run", Color(red: 0.20, green: 0.78, blue: 0.35))
+        case "com.apple.focus.gaming": ("gamecontroller.fill", Color(red: 0.0, green: 0.48, blue: 1.0))
+        case "com.apple.focus.mindfulness": ("camera.macro", Color(red: 0.10, green: 0.78, blue: 0.70))
+        case "com.apple.focus.reading": ("book.closed.fill", Color(red: 1.0, green: 0.58, blue: 0.20))
+        case "com.apple.focus.reduce-interruptions": ("atom", Color(red: 0.80, green: 0.25, blue: 0.90))
+        default: nil
+        }
+    }
+
+    /// The localized name of Apple's own Focus modes: the configuration file stores them in English.
+    static func builtInName(_ identifier: String) -> String? {
+        switch identifier {
+        case "com.apple.donotdisturb.mode.default": String(localized: "Do Not Disturb")
+        case "com.apple.sleep.sleep-mode": String(localized: "Sleep", comment: "The Sleep Focus")
+        case "com.apple.focus.work": String(localized: "Work", comment: "The Work Focus")
+        case "com.apple.focus.personal-time": String(localized: "Personal", comment: "The Personal Focus")
+        case "com.apple.donotdisturb.mode.driving": String(localized: "Driving", comment: "The Driving Focus")
+        case "com.apple.focus.fitness": String(localized: "Fitness", comment: "The Fitness Focus")
+        case "com.apple.focus.gaming": String(localized: "Gaming", comment: "The Gaming Focus")
+        case "com.apple.focus.mindfulness": String(localized: "Mindfulness", comment: "The Mindfulness Focus")
+        case "com.apple.focus.reading": String(localized: "Reading", comment: "The Reading Focus")
+        case "com.apple.focus.reduce-interruptions": String(localized: "Reduce Interruptions", comment: "The Reduce Interruptions Focus")
+        default: nil
+        }
     }
 
     /// Recursively collects the values for `key` anywhere in a JSON tree.

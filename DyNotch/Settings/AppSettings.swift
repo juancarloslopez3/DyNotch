@@ -213,6 +213,15 @@ final class AppSettings {
     var hudKeyboard: Bool { didSet { defaults.set(hudKeyboard, forKey: "hudKeyboard") } }
     var backlightModifier: BacklightModifier { didSet { defaults.set(backlightModifier.rawValue, forKey: "backlightModifier") } }
     var brightnessKeyScope: BrightnessKeyScope { didSet { defaults.set(brightnessKeyScope.rawValue, forKey: "brightnessKeyScope") } }
+    /// How far a press of the volume, brightness or backlight keys moves each one, in percent,
+    /// and how far while holding ⇧⌥; see `keyStep(for:fine:)`.
+    var volumeStep: Int { didSet { defaults.set(volumeStep, forKey: "volumeStep") } }
+    var volumeFineStep: Int { didSet { defaults.set(volumeFineStep, forKey: "volumeFineStep") } }
+    var brightnessStep: Int { didSet { defaults.set(brightnessStep, forKey: "brightnessStep") } }
+    var brightnessFineStep: Int { didSet { defaults.set(brightnessFineStep, forKey: "brightnessFineStep") } }
+    var keyboardStep: Int { didSet { defaults.set(keyboardStep, forKey: "keyboardStep") } }
+    var keyboardFineStep: Int { didSet { defaults.set(keyboardFineStep, forKey: "keyboardFineStep") } }
+    static let hudStepRange = 1...25
     /// The brightness last set on each monitor adjusted over DDC/CI, by vendor, model and serial
     /// number, for the monitors that can't say theirs.
     var externalBrightness: [String: Double] { didSet { defaults.set(externalBrightness, forKey: "externalBrightness") } }
@@ -238,11 +247,19 @@ final class AppSettings {
     var liveBluetooth: Bool { didSet { defaults.set(liveBluetooth, forKey: "liveBluetooth") } }
     /// Off, connecting AirPods show up beside the notch like any other device.
     var liveAirPodsAnimation: Bool { didSet { defaults.set(liveAirPodsAnimation, forKey: "liveAirPodsAnimation") } }
+    /// On, iPhones, iPads and Apple Watches show up as they connect too, which they do by
+    /// themselves now and then.
+    var liveBluetoothContinuity: Bool { didSet { defaults.set(liveBluetoothContinuity, forKey: "liveBluetoothContinuity") } }
     var liveMeetings: Bool { didSet { defaults.set(liveMeetings, forKey: "liveMeetings") } }
+    /// A phone or FaceTime call shows beside the notch while it's going on.
+    var liveCalls: Bool { didSet { defaults.set(liveCalls, forKey: "liveCalls") } }
     var liveFocus: Bool { didSet { defaults.set(liveFocus, forKey: "liveFocus") } }
     var liveCapsLock: Bool { didSet { defaults.set(liveCapsLock, forKey: "liveCapsLock") } }
     var capsLockPersistent: Bool { didSet { defaults.set(capsLockPersistent, forKey: "capsLockPersistent") } }
     var liveSongChange: Bool { didSet { defaults.set(liveSongChange, forKey: "liveSongChange") } }
+    /// A light rim around the notch and its bubble while they show an activity, as the Dynamic
+    /// Island has.
+    var activityRim: Bool { didSet { defaults.set(activityRim, forKey: "activityRim") } }
 
     // MARK: Timers
     /// Timer, Stopwatch and Pomodoro, top to bottom in the Timers tab.
@@ -270,6 +287,9 @@ final class AppSettings {
         func bool(_ key: String, _ fallback: Bool) -> Bool { defaults.object(forKey: key) as? Bool ?? fallback }
         func int(_ key: String, _ fallback: Int) -> Int { defaults.object(forKey: key) as? Int ?? fallback }
         func double(_ key: String, _ fallback: Double) -> Double { defaults.object(forKey: key) as? Double ?? fallback }
+        func stepPercent(_ key: String, _ fallback: Int) -> Int {
+            min(max(int(key, fallback), Self.hudStepRange.lowerBound), Self.hudStepRange.upperBound)
+        }
 
         openMode = OpenMode(rawValue: defaults.string(forKey: "openMode") ?? "") ?? .hover
         hoverDelay = double("hoverDelay", 0.15)
@@ -307,6 +327,12 @@ final class AppSettings {
         hudKeyboard = bool("hudKeyboard", true)
         backlightModifier = BacklightModifier(rawValue: defaults.string(forKey: "backlightModifier") ?? "") ?? .control
         brightnessKeyScope = BrightnessKeyScope(rawValue: defaults.string(forKey: "brightnessKeyScope") ?? "") ?? .pointer
+        volumeStep = stepPercent("volumeStep", 5)
+        volumeFineStep = stepPercent("volumeFineStep", 2)
+        brightnessStep = stepPercent("brightnessStep", 5)
+        brightnessFineStep = stepPercent("brightnessFineStep", 2)
+        keyboardStep = stepPercent("keyboardStep", 5)
+        keyboardFineStep = stepPercent("keyboardFineStep", 2)
         externalBrightness = defaults.dictionary(forKey: "externalBrightness") as? [String: Double] ?? [:]
 
         worldClockIDs = defaults.stringArray(forKey: "worldClockIDs") ?? []
@@ -323,11 +349,14 @@ final class AppSettings {
         liveBattery = bool("liveBattery", true)
         liveBluetooth = bool("liveBluetooth", true)
         liveAirPodsAnimation = bool("liveAirPodsAnimation", true)
+        liveBluetoothContinuity = bool("liveBluetoothContinuity", false)
         liveMeetings = bool("liveMeetings", true)
+        liveCalls = bool("liveCalls", true)
         liveFocus = bool("liveFocus", true)
         liveCapsLock = bool("liveCapsLock", true)
         capsLockPersistent = bool("capsLockPersistent", false)
         liveSongChange = bool("liveSongChange", true)
+        activityRim = bool("activityRim", true)
 
         timerOrder = LayoutOrder.complete(defaults.stringArray(forKey: "timerOrder"))
         pomodoroWorkMinutes = int("pomodoroWorkMinutes", 25)
@@ -375,6 +404,19 @@ final class AppSettings {
     /// Home while it has the widget.
     func tab(about widget: HomeWidget, ownTab: NotchTab? = nil) -> NotchTab? {
         [ownTab, homeLayout.contains(widget) ? .home : nil].compactMap { $0 }.first(where: visibleTabs.contains)
+    }
+
+    // MARK: HUD
+
+    /// How far a press of `kind`'s keys moves it, from 0 to 1: its step, or with ⇧⌥ held, its
+    /// fine step.
+    func keyStep(for kind: HUDKind, fine: Bool) -> Float {
+        let percent = switch kind {
+        case .volume: fine ? volumeFineStep : volumeStep
+        case .brightness: fine ? brightnessFineStep : brightnessStep
+        case .keyboard: fine ? keyboardFineStep : keyboardStep
+        }
+        return Float(percent) / 100
     }
 
     private func storeCodable<T: Encodable>(_ value: T?, _ key: String) {

@@ -14,11 +14,7 @@ struct SettingsView: View {
                             Label {
                                 Text(pane.title)
                             } icon: {
-                                Image(systemName: pane.symbol)
-                                    .font(.system(size: 11, weight: .semibold))
-                                    .foregroundStyle(.white)
-                                    .frame(width: 20, height: 20)
-                                    .background(pane.color.gradient, in: .rect(cornerRadius: 5))
+                                SymbolTile(symbol: pane.symbol, color: pane.color)
                             }
                             .tag(pane)
                         }
@@ -150,11 +146,20 @@ private struct LiveActivitiesPane: View {
         @Bindable var settings = services.settings
         Form {
             Section {
+                Toggle(isOn: $settings.liveCalls) {
+                    Text("You're on a phone or FaceTime call")
+                    Text("Click the notch during a call for its buttons. Its dots move with the call's sound while “Bars move with the music” is on in Now Playing.")
+                }
                 Toggle("A charger is plugged in or the battery runs low", isOn: $settings.liveBattery)
                 Toggle("A Bluetooth device connects", isOn: $settings.liveBluetooth)
                 if settings.liveBluetooth {
-                    Toggle("Animate AirPods as they connect", isOn: $settings.liveAirPodsAnimation)
+                    Toggle("Animate AirPods and Beats as they connect", isOn: $settings.liveAirPodsAnimation)
                         .padding(.leading, 18)
+                    Toggle(isOn: $settings.liveBluetoothContinuity) {
+                        Text("Include iPhone, iPad and Apple Watch")
+                        Text("They connect by themselves now and then, for Handoff or to unlock your Mac.")
+                    }
+                    .padding(.leading, 18)
                     PermissionNotice(.bluetooth, "Needs Bluetooth to see devices connect.")
                 }
                 Toggle("Caps Lock is toggled", isOn: $settings.liveCapsLock)
@@ -178,6 +183,12 @@ private struct LiveActivitiesPane: View {
             } footer: {
                 Text("macOS has no public API for Focus. DyNotch reads the Focus database, which may miss some automatic schedules.")
             }
+            Section("Appearance") {
+                Toggle(isOn: $settings.activityRim) {
+                    Text("Light rim around activities")
+                    Text("A thin edge around the notch and its bubble while they show an activity, like the Dynamic Island's. It helps them stand out on a dark menu bar.")
+                }
+            }
         }
     }
 }
@@ -199,6 +210,17 @@ private struct HUDPane: View {
                 PermissionNotice(.accessibility, "Needs Accessibility to replace the system HUD.")
             } header: {
                 Text("Replace the System HUD For")
+            }
+            // Only the keys DyNotch takes over move by these steps, so the others' rows are dimmed.
+            Section {
+                KeyStepRow(kind: .volume, step: $settings.volumeStep, fineStep: $settings.volumeFineStep)
+                    .disabled(!settings.hudVolume)
+                KeyStepRow(kind: .brightness, step: $settings.brightnessStep, fineStep: $settings.brightnessFineStep)
+                    .disabled(!settings.hudBrightness)
+                KeyStepRow(kind: .keyboard, step: $settings.keyboardStep, fineStep: $settings.keyboardFineStep)
+                    .disabled(!settings.hudKeyboard)
+            } header: {
+                Text("Steps")
             } footer: {
                 Text("Hold ⇧⌥ while pressing the keys for finer steps.")
             }
@@ -220,8 +242,7 @@ private struct HUDPane: View {
                 }
                 if hud.keyboard.isAvailable {
                     LabeledContent("Brightness") {
-                        Slider(value: $keyboardLevel, in: 0...1) { _ in }
-                            .frame(maxWidth: 240)
+                        LevelSlider(label: Text("Brightness"), level: $keyboardLevel)
                             .onChange(of: keyboardLevel) { _, level in
                                 hud.set(.keyboard, level: level, showHUD: false)
                             }
@@ -240,6 +261,136 @@ private struct HUDPane: View {
     }
 }
 
+/// How far each press of a level's keys moves it, and how far with ⇧⌥ held, side by side, with
+/// what that comes to in presses. Dimmed, symbol and all, while macOS handles those keys.
+private struct KeyStepRow: View {
+    let kind: HUDKind
+    @Binding var step: Int
+    @Binding var fineStep: Int
+    @Environment(\.isEnabled) private var isEnabled
+
+    var body: some View {
+        LabeledContent {
+            HStack(spacing: 14) {
+                NumberField(title: "Each key press", value: $step, range: AppSettings.hudStepRange, unit: "%", width: 36)
+                    .help("Each key press")
+                HStack(spacing: 6) {
+                    ModifierKeys()
+                    NumberField(title: "Holding ⇧⌥", value: $fineStep, range: AppSettings.hudStepRange, unit: "%", width: 36)
+                }
+                .help("Holding ⇧⌥")
+            }
+            // The Form lines label and controls up by their first lines; by their middles, the
+            // steppers sit centered beside the title and its line below.
+            .alignmentGuide(.firstTextBaseline) { $0[VerticalAlignment.center] }
+        } label: {
+            // Laid out by hand: a Label keeps its symbol beside the first line, and a LabelStyle
+            // of our own loses the Form's subtitle look. Spacing and font match the Form's.
+            HStack(spacing: 10) {
+                SymbolTile(symbol: symbol, color: color)
+                    .saturation(isEnabled ? 1 : 0)
+                    .opacity(isEnabled ? 1 : 0.5)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .foregroundStyle(isEnabled ? .primary : .tertiary)
+                    Text("0–100 % in \(Self.presses(step)) presses, \(Self.presses(fineStep)) with ⇧⌥")
+                        .font(.subheadline)
+                        .foregroundStyle(isEnabled ? .secondary : .tertiary)
+                }
+            }
+            .alignmentGuide(.firstTextBaseline) { $0[VerticalAlignment.center] }
+        }
+    }
+
+    private var title: LocalizedStringKey {
+        switch kind {
+        case .volume: "Volume"
+        case .brightness: "Display brightness"
+        case .keyboard: "Keyboard backlight"
+        }
+    }
+
+    /// Symbols like the HUD's, on the colors System Settings gives Sound, Displays and Keyboard.
+    private var symbol: String {
+        switch kind {
+        case .volume: "speaker.wave.2.fill"
+        case .brightness: "sun.max.fill"
+        case .keyboard: "light.max"
+        }
+    }
+
+    private var color: Color {
+        switch kind {
+        case .volume: .pink
+        case .brightness: .blue
+        case .keyboard: .gray
+        }
+    }
+
+    /// Presses from one end to the other; the last one may be short, as 7 % takes 15.
+    static func presses(_ percent: Int) -> Int {
+        (100 + percent - 1) / percent
+    }
+}
+
+/// ⇧⌥, drawn as the two keys: outlined, so they don't pass for buttons beside the stepper.
+private struct ModifierKeys: View {
+    @Environment(\.isEnabled) private var isEnabled
+
+    var body: some View {
+        HStack(spacing: 2) {
+            ForEach(["⇧", "⌥"], id: \.self) { glyph in
+                Text(verbatim: glyph)
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundStyle(isEnabled ? .secondary : .tertiary)
+                    .frame(width: 17, height: 17)
+                    .overlay(RoundedRectangle(cornerRadius: 4).strokeBorder(isEnabled ? .tertiary : .quaternary, lineWidth: 1))
+            }
+        }
+        .accessibilityHidden(true)
+    }
+}
+
+/// A symbol on a rounded square of its color, as in the sidebar.
+private struct SymbolTile: View {
+    let symbol: String
+    let color: Color
+
+    var body: some View {
+        Image(systemName: symbol)
+            .font(.system(size: 11, weight: .semibold))
+            .foregroundStyle(.white)
+            .frame(width: 20, height: 20)
+            .background(color.gradient, in: .rect(cornerRadius: 5))
+    }
+}
+
+/// A level from 0 to 100 %, with a tick every 10 % to tell roughly where it is and the
+/// percentage after it, rounded as the HUD shows it.
+private struct LevelSlider: View {
+    /// Names it for VoiceOver.
+    let label: Text
+    @Binding var level: Float
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Slider(value: $level, in: 0...1) {
+                label
+            } ticks: {
+                SliderTickContentForEach(Self.ticks, id: \.self) { SliderTick($0) }
+            }
+            .labelsHidden()
+            .frame(maxWidth: 240)
+            Text(Int((level * 100).rounded()), format: .percent)
+                .monospacedDigit()
+                .frame(width: 40, alignment: .trailing)
+                .accessibilityHidden(true)
+        }
+    }
+
+    private static let ticks = (0...10).map { Float($0) / 10 }
+}
+
 /// A display's brightness, and how DyNotch reaches it.
 private struct DisplayBrightnessRow: View {
     @Environment(AppServices.self) private var services
@@ -248,8 +399,7 @@ private struct DisplayBrightnessRow: View {
     var body: some View {
         if display.isAdjustable {
             LabeledContent {
-                Slider(value: level, in: 0...1)
-                    .frame(maxWidth: 240)
+                LevelSlider(label: Text(display.name), level: level)
             } label: {
                 Text(display.name)
                 if display.control == .ddc {

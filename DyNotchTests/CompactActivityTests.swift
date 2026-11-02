@@ -32,6 +32,18 @@ struct CompactActivityTests {
         #expect(order == [.media, .timer])
     }
 
+    @Test func aCallTakesTheNotchFromWhatHadIt() {
+        // Music playing, then a call: the call takes the notch and the music goes in the bubble.
+        var order = CompactActivity.arranged([.media], keeping: [])
+        order = CompactActivity.arranged([.call, .media], keeping: order)
+        #expect(order == [.call, .media])
+        // The call ends: the music moves back in.
+        order = CompactActivity.arranged([.media], keeping: order)
+        #expect(order == [.media])
+        // Even when the call is listed after what's going on.
+        #expect(CompactActivity.arranged([.timer, .media, .call], keeping: [.timer, .media]) == [.call, .timer, .media])
+    }
+
     @Test func aTimeGetsAnOvalAndTheRestACircle() {
         let notch = CGSize(width: 184, height: 32)
         let round = notch.height - NotchMetrics.bubbleInset * 2

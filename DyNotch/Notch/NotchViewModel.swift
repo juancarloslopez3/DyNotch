@@ -3,6 +3,7 @@ import Observation
 
 /// Persistent things shown beside a closed notch while they are going on.
 enum CompactActivity: Equatable {
+    case call
     case media
     case timer
     case capsLock
@@ -12,7 +13,7 @@ enum CompactActivity: Equatable {
     var wing: CGFloat {
         switch self {
         case .media: 44
-        case .timer: 64
+        case .call, .timer: 64
         case .capsLock: 36
         case .clock: 52
         }
@@ -24,7 +25,7 @@ enum CompactActivity: Equatable {
         let height = notch.height - NotchMetrics.bubbleInset * 2
         return switch self {
         case .timer, .clock: CGSize(width: height + 22, height: height)
-        case .media, .capsLock: CGSize(width: height, height: height)
+        case .call, .media, .capsLock: CGSize(width: height, height: height)
         }
     }
 
@@ -34,15 +35,17 @@ enum CompactActivity: Equatable {
         switch self {
         case .timer: settings.tab(about: .timer, ownTab: .timers)
         case .media: settings.tab(about: .media)
-        case .capsLock, .clock: nil
+        case .call, .capsLock, .clock: nil
         }
     }
 
     /// `active` with those in `order` first, as they were, then the ones that just started: what
-    /// is beside the notch keeps its place while other activities come and go after it.
+    /// is beside the notch keeps its place while other activities come and go after it. Apart
+    /// from a call, which takes the notch from whatever had it, as on the iPhone.
     static func arranged(_ active: [CompactActivity], keeping order: [CompactActivity]) -> [CompactActivity] {
         let staying = order.filter(active.contains)
-        return staying + active.filter { !staying.contains($0) }
+        let arranged = staying + active.filter { !staying.contains($0) }
+        return arranged.filter { $0 == .call } + arranged.filter { $0 != .call }
     }
 }
 
@@ -50,8 +53,10 @@ enum NotchPresentation: Equatable {
     case closed
     case peek
     case compact(CompactActivity, hovering: Bool)
-    case transient(LiveActivity)
+    case transient(LiveActivity, hovering: Bool)
     case open
+    /// The call's controls, which a click on it opens instead of the tabs.
+    case call
     case dropTarget
 
     /// Identity of the content shown, used to drive content transitions.
@@ -61,16 +66,31 @@ enum NotchPresentation: Equatable {
         case .peek: "peek"
         // Hovering only resizes the content, so it keeps the same identity.
         case .compact(let activity, _): "compact-\(activity)"
-        case .transient(let activity): "transient-\(activity.id)"
+        case .transient(let activity, _): "transient-\(activity.id)"
         case .open: "open"
+        case .call: "call"
         case .dropTarget: "drop"
+        }
+    }
+
+    /// Shows an activity that takes the light rim: not Caps Lock or a volume or brightness level,
+    /// which keep the plain notch, and not the idle clock.
+    var takesRim: Bool {
+        switch self {
+        case .compact(let activity, _): activity != .capsLock && activity != .clock
+        case .transient(let activity, _):
+            switch activity.kind {
+            case .hud, .capsLock: false
+            default: true
+            }
+        default: false
         }
     }
 
     var isExpanded: Bool {
         switch self {
-        case .open, .dropTarget: true
-        case .transient(let activity):
+        case .open, .call, .dropTarget: true
+        case .transient(let activity, _):
             if case .expanded = activity.kind.layout(notch: .zero) { true } else { false }
         default: false
         }
@@ -86,8 +106,9 @@ enum NotchMetrics {
     static let dropTargetWidth: CGFloat = 460
     static let dropTargetContentHeight: CGFloat = 116
     static let maxTopRadius: CGFloat = 14
-    /// How much a compact activity grows (per wing, and in height) while the pointer is over it.
-    static let compactHoverGrowth = CGSize(width: 6, height: 5)
+    /// How much an activity in the notch grows (per wing, and in height) while the pointer is over
+    /// it.
+    static let hoverGrowth = CGSize(width: 6, height: 5)
     /// A second activity's bubble: how far it stands off the notch, and its margin above and
     /// below within the notch's height.
     static let bubbleGap: CGFloat = 7
@@ -95,6 +116,13 @@ enum NotchMetrics {
     /// How far anything beside the cut-out stands off the screen, for its shadow (1 once the
     /// notch drops down).
     static let besideNotchElevation: CGFloat = 0.35
+    /// The light rim around an activity (the notch's and its bubble's), so it shows on a dark
+    /// menu bar: how bright, and brighter under the pointer. A call's is green.
+    static let rimOpacity: CGFloat = 0.3
+    static let hoveredRimOpacity: CGFloat = 0.55
+    /// With the rim on, how far an activity beside the notch reaches below the cut-out: the
+    /// rim's own width, so its bottom edge runs just under the camera housing rather than behind it.
+    static let rimDrop: CGFloat = 1
     /// Room around the shape inside the window for the drop shadow, so its soft edge isn't
     /// cut off by the window's.
     static let shadowPadding: CGFloat = 64
@@ -110,6 +138,8 @@ final class NotchViewModel {
     var geometry: NotchGeometry
 
     private(set) var isOpen = false
+    /// Opened on the call going on, rather than on a tab: its controls show.
+    private(set) var showsCall = false
     private(set) var isHovering = false
     private(set) var isPeeking = false
     /// The pointer is over the bubble beside the notch. The bubble is a button of its own: it
@@ -176,12 +206,18 @@ final class NotchViewModel {
         // Stop button is always there.
         if isPrimary, services.timers.isRinging, let activity = services.activities.current,
            case .timerFinished = activity.kind {
-            return .transient(activity)
+            return .transient(activity, hovering: false)
         }
-        if isOpen { return .open }
+        if isOpen {
+            // Opened on a call, its controls. Once the call is gone they fold away with it as
+            // the notch closes (`trackCompactOrder`), rather than give way to the tabs.
+            if !showsCall { return .open }
+            if compactActivity == .call { return .call }
+        }
         if let activity = services.activities.current, shows(activity) {
-            if !suppressedForFullScreen { return .transient(activity) }
-            if case .hud = activity.kind { return .transient(activity) }
+            // Like the notch's own, it grows under the pointer, ready to open.
+            if !suppressedForFullScreen { return .transient(activity, hovering: isPeeking && activity.kind.opensNotch) }
+            if case .hud = activity.kind { return .transient(activity, hovering: false) }
         }
         if suppressedForFullScreen { return .closed }
         // A compact activity is already visible and clickable, so hovering grows it rather
@@ -225,6 +261,7 @@ final class NotchViewModel {
     /// The persistent activities going on, the more important first when they start together.
     private var activeCompactActivities: [CompactActivity] {
         var activities: [CompactActivity] = []
+        if settings.liveCalls, services.calls.call != nil { activities.append(.call) }
         if services.timers.isRunning { activities.append(.timer) }
         let isPlaying = settings.showCompactMedia && services.media.isActive
         if isPlaying, !hidesPlayerInFullScreen { activities.append(.media) }
@@ -241,6 +278,8 @@ final class NotchViewModel {
         } onChange: { [weak self] in
             Task { @MainActor [weak self] in self?.trackCompactOrder() }
         }
+        // The call ended with its controls open: they close with it, as the Dynamic Island's.
+        if isOpen, showsCall, compactOrder.first != .call { close() }
     }
 
     var tab: NotchTab {
@@ -261,6 +300,12 @@ final class NotchViewModel {
     /// Moves to the tab beside the current one in the tab bar: the next one for +1, the previous
     /// one for -1.
     func swipeTab(by step: Int) {
+        // Over a call's controls, a swipe goes to the tabs, as they were.
+        if isOpen, showsCall {
+            showsCall = false
+            Haptics.perform()
+            return
+        }
         let tabs = settings.visibleTabs
         guard isOpen, tabs.count > 1, let index = tabs.firstIndex(of: tab) else { return }
         guard tabs.indices.contains(index + step) else {
@@ -280,20 +325,36 @@ final class NotchViewModel {
         case .peek:
             return CGSize(width: notch.width + 18, height: notch.height + 5)
         case .compact(let activity, let hovering):
-            let growth = hovering ? NotchMetrics.compactHoverGrowth : .zero
-            return CGSize(width: notch.width + (activity.wing + growth.width) * 2, height: notch.height + growth.height)
-        case .transient(let activity):
+            let growth = hovering ? NotchMetrics.hoverGrowth : .zero
+            return CGSize(width: notch.width + (activity.wing + growth.width) * 2, height: besideNotch(for: presentation).height + growth.height)
+        case .transient(let activity, let hovering):
+            let growth = hovering ? NotchMetrics.hoverGrowth : .zero
             switch activity.kind.layout(notch: notch) {
             case .wings(let wing):
-                return CGSize(width: notch.width + wing * 2, height: notch.height)
+                return CGSize(width: notch.width + (wing + growth.width) * 2, height: besideNotch(for: presentation).height + growth.height)
             case .expanded(let width, let extraHeight):
-                return CGSize(width: max(width, notch.width), height: notch.height + extraHeight)
+                return CGSize(width: max(width, notch.width) + growth.width * 2, height: notch.height + extraHeight + growth.height)
             }
         case .open:
             return CGSize(width: NotchMetrics.openWidth, height: notch.height + openContentHeight)
+        case .call:
+            return CGSize(width: CallControlsView.width(notch: notch), height: notch.height + CallControlsView.contentHeight)
         case .dropTarget:
             return CGSize(width: NotchMetrics.dropTargetWidth, height: notch.height + NotchMetrics.dropTargetContentHeight)
         }
+    }
+
+    /// The notch has the light rim in `presentation`: Settings › Live Activities turns it on for
+    /// the activities that take it.
+    func hasRim(_ presentation: NotchPresentation) -> Bool {
+        settings.activityRim && presentation.takesRim
+    }
+
+    /// The cut-out as an activity beside it in `presentation` has it: a little taller while the
+    /// rim shows, so the rim runs under the camera housing too.
+    func besideNotch(for presentation: NotchPresentation) -> CGSize {
+        let notch = geometry.notchSize
+        return CGSize(width: notch.width, height: notch.height + (hasRim(presentation) ? NotchMetrics.rimDrop : 0))
     }
 
     /// How tall the open notch is below the cut-out: taller on the Camera tab with its large
@@ -307,7 +368,7 @@ final class NotchViewModel {
         case .closed: 4
         case .peek, .compact: 6
         case .transient: presentation.isExpanded ? 10 : 6
-        case .open, .dropTarget: NotchMetrics.maxTopRadius
+        case .open, .call, .dropTarget: NotchMetrics.maxTopRadius
         }
     }
 
@@ -316,8 +377,9 @@ final class NotchViewModel {
         case .closed: 10
         case .peek: 12
         case .compact: shapeSize(for: presentation).height / 2
-        case .transient: presentation.isExpanded ? 24 : geometry.notchSize.height / 2
+        case .transient: presentation.isExpanded ? 24 : shapeSize(for: presentation).height / 2
         case .open: 32
+        case .call: CallControlsView.cornerRadius
         case .dropTarget: 28
         }
     }
@@ -328,11 +390,11 @@ final class NotchViewModel {
             .insetBy(dx: -topRadius(for: presentation), dy: 0)
     }
 
-    /// The bubble's rect in global screen coordinates: off the notch's right side, centred on the
-    /// cut-out's height.
+    /// The bubble's rect in global screen coordinates: off the notch's right side, centred on its
+    /// height.
     func bubbleRect(for presentation: NotchPresentation) -> CGRect? {
         guard let bubble = bubble(for: presentation) else { return nil }
-        let notch = geometry.notchSize
+        let notch = besideNotch(for: presentation)
         let size = bubble.bubbleSize(notch: notch)
         return CGRect(
             x: geometry.notchCenterX + shapeSize(for: presentation).width / 2 + NotchMetrics.bubbleGap,
@@ -370,12 +432,20 @@ final class NotchViewModel {
             || bubbleTarget(for: presentation)?.contains(location) == true
     }
 
+    /// Whether a click on a notification in the notch opens the notch, as one anywhere on the
+    /// closed notch does. Its own buttons (Join, the volume bar) still take theirs. Not in a
+    /// full-screen app that hides the notch, where only the volume and brightness show.
+    func opensOnClick(_ presentation: NotchPresentation) -> Bool {
+        guard case .transient(let activity, _) = presentation else { return false }
+        return activity.kind.opensNotch && !suppressedForFullScreen
+    }
+
     func handleMouse(_ type: NSEvent.EventType, at location: CGPoint) {
         let presentation = presentation
         let rect = shapeRect(for: presentation)
         let hoverRect: CGRect = switch presentation {
         case .closed: rect.insetBy(dx: -8, dy: -4)
-        case .open: rect.insetBy(dx: -14, dy: -14)
+        case .open, .call: rect.insetBy(dx: -14, dy: -14)
         default: rect.insetBy(dx: -4, dy: -4)
         }
         // Over the bubble, the notch itself is left alone: it neither peeks nor opens.
@@ -402,9 +472,7 @@ final class NotchViewModel {
         if inside {
             closeTask?.cancel()
             guard !isOpen, !suppressedForFullScreen else { return }
-            // Over a finished timer's alert the pointer is on its way to Again or Stop,
-            // which opening would cover.
-            if case .transient(let activity) = presentation, case .timerFinished = activity.kind { return }
+            if case .transient(let activity, _) = presentation, !activity.kind.opensNotch { return }
             isPeeking = true
             guard settings.openMode == .hover else {
                 // A click opens it, which the trackpad already feels, so the tap comes now:
@@ -447,9 +515,14 @@ final class NotchViewModel {
     func open(tab: NotchTab? = nil, haptic: Bool = true) {
         hoverTask?.cancel()
         closeTask?.cancel()
-        if let tab { self.tab = tab }
+        if let tab {
+            self.tab = tab
+            showsCall = false
+        }
         isPeeking = false
         guard !isOpen else { return }
+        // Like the Dynamic Island, a call going on opens on its controls.
+        showsCall = tab == nil && compactActivity == .call
         if tab == nil, let opening = activityTab() ?? settings.effectiveOpeningTab { self.tab = opening }
         isOpen = true
         if haptic { Haptics.perform() }
@@ -465,7 +538,7 @@ final class NotchViewModel {
     /// opens its app: the first with a tab in the tab bar of the one showing for a moment, the
     /// one attached to the notch and the one in its bubble.
     private func activityTab() -> NotchTab? {
-        if case .transient(let activity) = presentation, let tab = tab(readiedFor: activity.kind) {
+        if case .transient(let activity, _) = presentation, let tab = tab(readiedFor: activity.kind) {
             return tab
         }
         for activity in compactActivities.prefix(2) {

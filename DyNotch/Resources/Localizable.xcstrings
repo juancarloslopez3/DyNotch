@@ -15,6 +15,9 @@
         }
       }
     },
+    "%" : {
+      "shouldTranslate" : false
+    },
     "%@ (Default)" : {
       "localizations" : {
         "es" : {
@@ -228,6 +231,16 @@
     "03:36" : {
       "shouldTranslate" : false
     },
+    "0–100 %% in %lld presses, %lld with ⇧⌥" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0–100 %% en %lld pulsaciones, %lld con ⇧⌥"
+          }
+        }
+      }
+    },
     "1 min" : {
       "shouldTranslate" : false
     },
@@ -307,6 +320,16 @@
         }
       }
     },
+    "A thin edge around the notch and its bubble while they show an activity, like the Dynamic Island's. It helps them stand out on a dark menu bar." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un borde fino alrededor del notch y su burbuja mientras muestran una actividad, como el de la Dynamic Island. Ayuda a que destaquen sobre una barra de menús oscura."
+          }
+        }
+      }
+    },
     "About" : {
       "localizations" : {
         "es" : {
@@ -353,6 +376,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añade widgets de Inicio en Ajustes › Disposición"
+          }
+        }
+      }
+    },
+    "Add People" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir personas"
           }
         }
       }
@@ -600,18 +633,28 @@
         }
       }
     },
-    "Animate AirPods as they connect" : {
+    "Animate AirPods and Beats as they connect" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Animar los AirPods al conectarse"
+            "value" : "Animar los AirPods y Beats al conectarse"
           }
         }
       }
     },
     "App" : {
       "shouldTranslate" : false
+    },
+    "Appearance" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apariencia"
+          }
+        }
+      }
     },
     "Arrange the widgets and tabs in Settings › Layout." : {
       "localizations" : {
@@ -649,6 +692,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Los pide uno por uno: responde a los avisos y después activa el resto en Ajustes del Sistema."
+          }
+        }
+      }
+    },
+    "Audio Output" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salida de audio"
           }
         }
       }
@@ -719,16 +772,6 @@
     "Bluetooth" : {
       "shouldTranslate" : false
     },
-    "Bluetooth Device" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dispositivo Bluetooth"
-          }
-        }
-      }
-    },
     "Break's Over" : {
       "localizations" : {
         "es" : {
@@ -795,6 +838,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Calendarios"
+          }
+        }
+      }
+    },
+    "Call" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamada"
+          }
+        }
+      }
+    },
+    "Call Ended" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamada finalizada"
+          }
+        }
+      }
+    },
+    "Call Info" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información de la llamada"
+          }
+        }
+      }
+    },
+    "Calling…" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamando…"
           }
         }
       }
@@ -1022,6 +1105,16 @@
         }
       }
     },
+    "Click the notch during a call for its buttons. Its dots move with the call's sound while “Bars move with the music” is on in Now Playing." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haz clic en el notch durante una llamada para ver sus botones. Sus puntos se mueven con el sonido de la llamada mientras «Las barras se mueven con la música» está activado en En reproducción."
+          }
+        }
+      }
+    },
     "Click the picture to see yourself as others do. Video stays on your Mac and the camera turns off when the notch closes." : {
       "localizations" : {
         "es" : {
@@ -1068,6 +1161,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conectado"
+          }
+        }
+      }
+    },
+    "Contact Card" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarjeta de contacto"
           }
         }
       }
@@ -1334,6 +1437,17 @@
         }
       }
     },
+    "Driving" : {
+      "comment" : "The Driving Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conducción"
+          }
+        }
+      }
+    },
     "Drizzle" : {
       "localizations" : {
         "es" : {
@@ -1447,6 +1561,26 @@
         }
       }
     },
+    "Each key press" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada pulsación"
+          }
+        }
+      }
+    },
+    "End Call" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colgar"
+          }
+        }
+      }
+    },
     "Enjoying DyNotch?" : {
       "localizations" : {
         "es" : {
@@ -1496,6 +1630,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Los archivos que sueltas en el notch"
+          }
+        }
+      }
+    },
+    "Fitness" : {
+      "comment" : "The Fitness Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejercicio"
           }
         }
       }
@@ -1586,6 +1731,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acceso total al disco"
+          }
+        }
+      }
+    },
+    "Gaming" : {
+      "comment" : "The Gaming Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juego"
           }
         }
       }
@@ -1719,6 +1875,16 @@
         }
       }
     },
+    "Holding ⇧⌥" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Con ⇧⌥ pulsadas"
+          }
+        }
+      }
+    },
     "Home" : {
       "localizations" : {
         "es" : {
@@ -1802,6 +1968,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En %lld min · %@"
+          }
+        }
+      }
+    },
+    "Include iPhone, iPad and Apple Watch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incluir iPhone, iPad y Apple Watch"
           }
         }
       }
@@ -2026,6 +2202,16 @@
         }
       }
     },
+    "Light rim around activities" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borde claro alrededor de las actividades"
+          }
+        }
+      }
+    },
     "Like an iPhone timer, the sound repeats until you click Stop, for up to 5 minutes." : {
       "localizations" : {
         "es" : {
@@ -2177,6 +2363,17 @@
         }
       }
     },
+    "Mindfulness" : {
+      "comment" : "The Mindfulness Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mindfulness"
+          }
+        }
+      }
+    },
     "Mirror" : {
       "localizations" : {
         "es" : {
@@ -2203,6 +2400,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reflejada"
+          }
+        }
+      }
+    },
+    "More" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más"
           }
         }
       }
@@ -2324,6 +2531,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Música"
+          }
+        }
+      }
+    },
+    "Mute" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silenciar"
           }
         }
       }
@@ -2658,6 +2875,16 @@
         }
       }
     },
+    "On Hold" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En espera"
+          }
+        }
+      }
+    },
     "On battery" : {
       "localizations" : {
         "es" : {
@@ -2961,6 +3188,17 @@
         }
       }
     },
+    "Personal" : {
+      "comment" : "The Personal Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo libre"
+          }
+        }
+      }
+    },
     "Picture size" : {
       "localizations" : {
         "es" : {
@@ -3080,6 +3318,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lluvia"
+          }
+        }
+      }
+    },
+    "Reading" : {
+      "comment" : "The Reading Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lectura"
+          }
+        }
+      }
+    },
+    "Reduce Interruptions" : {
+      "comment" : "The Reduce Interruptions Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reducir interrupciones"
           }
         }
       }
@@ -3706,7 +3966,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dormir"
+            "value" : "Descanso"
           }
         }
       }
@@ -3843,6 +4103,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paso %lld de %lld"
+          }
+        }
+      }
+    },
+    "Steps" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incrementos"
           }
         }
       }
@@ -4004,6 +4274,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Después, activa “Permitir notificaciones”."
+          }
+        }
+      }
+    },
+    "They connect by themselves now and then, for Handoff or to unlock your Mac." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se conectan solos de vez en cuando, para Handoff o para desbloquear tu Mac."
           }
         }
       }
@@ -4218,6 +4498,16 @@
         }
       }
     },
+    "Unmute" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dejar de silenciar"
+          }
+        }
+      }
+    },
     "Untitled" : {
       "localizations" : {
         "es" : {
@@ -4340,6 +4630,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La versión %@ es la más reciente."
+          }
+        }
+      }
+    },
+    "Video" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vídeo"
           }
         }
       }
@@ -4524,6 +4824,17 @@
         }
       }
     },
+    "Work" : {
+      "comment" : "The Work Focus",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trabajo"
+          }
+        }
+      }
+    },
     "World Clocks" : {
       "localizations" : {
         "es" : {
@@ -4590,6 +4901,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Todo listo"
+          }
+        }
+      }
+    },
+    "You're on a phone or FaceTime call" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estás en una llamada telefónica o de FaceTime"
           }
         }
       }

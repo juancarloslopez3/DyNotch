@@ -270,41 +270,59 @@ struct TimersPane: View {
     }
 }
 
-/// A number to type or step, with its stepper after it, as System Settings shows them. What's
-/// typed is kept as it's typed, held to the range, so closing Settings without pressing Return
-/// doesn't lose it. Return, or a click anywhere outside the field, ends the typing and shows the
-/// number that was kept.
-private struct ValueStepper: View {
+/// A row with a number to type or step; see `NumberField`.
+struct ValueStepper: View {
     let title: LocalizedStringKey
     @Binding var value: Int
     let range: ClosedRange<Int>
     var step = 1
     var unit: LocalizedStringKey?
 
+    var body: some View {
+        LabeledContent(title) {
+            NumberField(title: title, value: $value, range: range, step: step, unit: unit)
+        }
+    }
+}
+
+/// A number to type or step, with its stepper after it, as System Settings shows them. What's
+/// typed is kept as it's typed, held to the range, so closing Settings without pressing Return
+/// doesn't lose it. Return, or a click anywhere outside the field, ends the typing and shows the
+/// number that was kept. `title` names it for VoiceOver.
+struct NumberField: View {
+    let title: LocalizedStringKey
+    @Binding var value: Int
+    let range: ClosedRange<Int>
+    var step = 1
+    var unit: LocalizedStringKey?
+    /// Room for three digits; two fit in 36.
+    var width: CGFloat = 44
+
     @State private var text = ""
     @FocusState private var isEditing: Bool
+    @Environment(\.isEnabled) private var isEnabled
     /// Watches for clicks while the field is being typed in.
     @State private var clickMonitor: Any?
 
     var body: some View {
-        LabeledContent(title) {
-            HStack(spacing: 4) {
-                TextField(title, text: $text)
-                    .textFieldStyle(.roundedBorder)
-                    .labelsHidden()
-                    .multilineTextAlignment(.trailing)
-                    .monospacedDigit()
-                    .frame(width: 44)
-                    .focused($isEditing)
-                    .onSubmit { isEditing = false }
-                    .onKeyPress(.upArrow) { stepped(up: true); return .handled }
-                    .onKeyPress(.downArrow) { stepped(up: false); return .handled }
-                if let unit {
-                    Text(unit)
-                }
-                Stepper(title, onIncrement: { stepped(up: true) }, onDecrement: { stepped(up: false) })
-                    .labelsHidden()
+        HStack(spacing: 4) {
+            TextField(title, text: $text)
+                .textFieldStyle(.roundedBorder)
+                .labelsHidden()
+                .multilineTextAlignment(.trailing)
+                .monospacedDigit()
+                .frame(width: width)
+                .focused($isEditing)
+                .onSubmit { isEditing = false }
+                .onKeyPress(.upArrow) { stepped(up: true); return .handled }
+                .onKeyPress(.downArrow) { stepped(up: false); return .handled }
+            if let unit {
+                // Dimmed with the field, which AppKit dims by itself.
+                Text(unit)
+                    .foregroundStyle(isEnabled ? .primary : .tertiary)
             }
+            Stepper(title, onIncrement: { stepped(up: true) }, onDecrement: { stepped(up: false) })
+                .labelsHidden()
         }
         .onAppear(perform: showKept)
         .onChange(of: text) {

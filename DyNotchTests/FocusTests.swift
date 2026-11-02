@@ -24,7 +24,9 @@ struct FocusTests {
 
     @Test func readsTheActiveModeFromModeConfigurations() throws {
         let focus = try #require(FocusMonitor.activeFocus(assertions: assertions(active: ["com.apple.focus.work"]), modes: modes))
-        #expect(focus == FocusEvent(name: "Work", symbol: "briefcase.fill", color: .cyan, isOn: true))
+        #expect(focus.name == String(localized: "Work", comment: "The Work Focus"))
+        #expect(focus.symbol == "person.text.rectangle.fill")
+        #expect(focus.isOn)
     }
 
     @Test func endedAssertionsMeanNoFocus() {

@@ -2,6 +2,7 @@ import CoreBluetooth
 import Foundation
 import IOBluetooth
 import IOKit
+import OSLog
 import SwiftUI
 
 nonisolated struct BluetoothBattery: Equatable, Sendable {
@@ -21,8 +22,11 @@ struct BluetoothEvent: Equatable {
     var symbol: String
     var isConnected: Bool
     var battery: BluetoothBattery?
-    /// Set for AirPods, which drop down with their own animation when they connect.
+    /// Set for AirPods, which connect with an animation of their own.
     var airPods: AirPodsModel? = nil
+    /// Apple's product and color IDs, where the device gives them, for its picture.
+    var productID: Int? = nil
+    var colorID: Int? = nil
     /// Off in Settings, AirPods show up beside the notch like any other device.
     var animatesAirPods = true
 
@@ -30,7 +34,7 @@ struct BluetoothEvent: Equatable {
     var animatedAirPods: AirPodsModel? { isConnected && animatesAirPods ? airPods : nil }
 }
 
-/// The AirPods DyNotch animates when they connect.
+/// The AirPods (and Beats) DyNotch animates when they connect.
 nonisolated enum AirPodsModel: Equatable, Sendable {
     /// 1st and 2nd generation.
     case airPods
@@ -38,6 +42,8 @@ nonisolated enum AirPodsModel: Equatable, Sendable {
     case airPods4
     case airPodsPro
     case airPodsMax
+    /// Beats headphones, earbuds and speakers, which turn into view like AirPods.
+    case beats(productID: Int)
 
     /// From the Bluetooth product ID (vendor 0x004C), so AirPods that were renamed are still known.
     init?(productID: Int) {
@@ -45,11 +51,36 @@ nonisolated enum AirPodsModel: Equatable, Sendable {
         case 0x2002, 0x200F: self = .airPods
         case 0x2013: self = .airPods3
         case 0x2019, 0x201B: self = .airPods4
-        case 0x200E, 0x2014, 0x2024: self = .airPodsPro
-        case 0x200A, 0x201F: self = .airPodsMax
-        default: return nil
+        case 0x200E, 0x2014, 0x2024, 0x2027: self = .airPodsPro
+        case 0x200A, 0x201F, 0x202D: self = .airPodsMax
+        default:
+            guard Self.beats[productID] != nil else { return nil }
+            self = .beats(productID: productID)
         }
     }
+
+    /// Each Beats model's name, for where theirs doesn't fit, and symbol.
+    static let beats: [Int: (name: String, symbol: String)] = [
+        0x2003: ("Powerbeats³", "beats.powerbeats3"),
+        0x2005: ("Beatsˣ", "beats.earphones"),
+        0x2006: ("Beats Solo³", "beats.headphones"),
+        0x2007: ("Beats Studio³", "beats.headphones"),
+        0x2009: ("Beats Studio³", "beats.headphones"),
+        0x200B: ("Powerbeats Pro", "beats.powerbeats.pro"),
+        0x200C: ("Beats Solo Pro", "beats.headphones"),
+        0x200D: ("Powerbeats", "beats.powerbeats"),
+        0x2010: ("Beats Flex", "beats.earphones"),
+        0x2011: ("Beats Studio Buds", "beats.studiobuds"),
+        0x2012: ("Beats Fit Pro", "beats.fitpro"),
+        0x2016: ("Beats Studio Buds +", "beats.studiobuds.plus"),
+        0x2017: ("Beats Studio Pro", "beats.headphones"),
+        0x201A: ("Beats Pill", "beats.pill.fill"),
+        0x201D: ("Powerbeats Pro 2", "beats.powerbeats.pro.2"),
+        0x2025: ("Beats Solo⁴", "beats.headphones"),
+        0x2026: ("Beats Solo Buds", "beats.solobuds"),
+        0x202F: ("Beats Fit Pro", "beats.fitpro"),
+        0x2038: ("Beats", "beats.headphones"),
+    ]
 
     /// From the name macOS gave them ("AirPods Max de Carlos", "Jane’s AirPods Pro").
     init?(name: String) {
@@ -73,7 +104,43 @@ nonisolated enum AirPodsModel: Equatable, Sendable {
         case .airPods4: "AirPods 4"
         case .airPodsPro: "AirPods Pro"
         case .airPodsMax: "AirPods Max"
+        case .beats(let productID): Self.beats[productID]?.name ?? "Beats"
         }
+    }
+
+    /// One of the model's product IDs, for its picture when the AirPods didn't give theirs.
+    var typicalProductID: Int {
+        switch self {
+        case .airPods: 0x200F
+        case .airPods3: 0x2013
+        case .airPods4: 0x2019
+        case .airPodsPro: 0x2024
+        case .airPodsMax: 0x201F
+        case .beats(let productID): productID
+        }
+    }
+
+    /// Its turn rendered from a 3D model, where the app has one (`<name>.turntable.heic`), in the
+    /// AirPods' color: by the color ID they report, as CoreBluetoothUI pictures them, else in the
+    /// one macOS shows when it doesn't know (Space Gray for the first AirPods Max, Starlight after).
+    /// AirPods Pro only come in white.
+    func turntable(productID: Int, colorID: Int?) -> String? {
+        if self == .airPodsPro { return "AirPodsPro" }
+        guard self == .airPodsMax else { return nil }
+        let color: String? = switch colorID ?? -1 {
+        case 0x00, 0x0F: "SpaceGray"
+        case 0x10: "Silver"
+        case 0x11: "Green"
+        case 0x03: "SkyBlue"
+        case 0x02: "Pink"
+        case 0x12: "Midnight"
+        case 0x13: "Starlight"
+        case 0x14: "Blue"
+        case 0x15: "Orange"
+        case 0x16: "Purple"
+        default: nil
+        }
+        return "AirPodsMax-" + (color ?? (productID == 0x200A ? "SpaceGray" : "Starlight"))
     }
 
     /// The pair, or the headphones.
@@ -84,18 +151,7 @@ nonisolated enum AirPodsModel: Equatable, Sendable {
         case .airPods4: "airpods.gen4"
         case .airPodsPro: "airpods.pro"
         case .airPodsMax: "airpods.max"
-        }
-    }
-
-    /// Each bud and the case they come out of; nil for the over-ear AirPods Max.
-    var earbuds: (left: String, right: String, chargingCase: String)? {
-        switch self {
-        case .airPods: ("airpod.left", "airpod.right", "airpods.chargingcase.fill")
-        case .airPods3: ("airpod.gen3.left", "airpod.gen3.right", "airpods.gen3.chargingcase.wireless.fill")
-        // The 4th generation buds have no symbols of their own; they look like the 3rd's.
-        case .airPods4: ("airpod.gen3.left", "airpod.gen3.right", "airpods.gen4.chargingcase.wireless.fill")
-        case .airPodsPro: ("airpodpro.left", "airpodpro.right", "airpods.pro.chargingcase.wireless.fill")
-        case .airPodsMax: nil
+        case .beats(let productID): Self.beats[productID]?.symbol ?? "beats.headphones"
         }
     }
 }
@@ -103,6 +159,7 @@ nonisolated enum AirPodsModel: Equatable, Sendable {
 /// Posts a live activity when a Bluetooth device connects or disconnects, with its
 /// battery level where macOS knows it.
 final class BluetoothMonitor: NSObject {
+    private static let logger = Logger(subsystem: "app.dynotch", category: "Bluetooth")
     private weak var services: AppServices?
     private var connectNotification: IOBluetoothUserNotification?
     private var startedAt = Date.now
@@ -113,6 +170,13 @@ final class BluetoothMonitor: NSObject {
         guard connectNotification == nil, CBManager.authorization == .allowedAlways else { return }
         startedAt = .now
         connectNotification = IOBluetoothDevice.register(forConnectNotifications: self, selector: #selector(deviceConnected(_:device:)))
+        // Apple's pictures of the AirPods and Beats paired with this Mac, ready for when they connect.
+        if services.settings.liveBluetooth, services.settings.liveAirPodsAnimation {
+            for case let device as IOBluetoothDevice in IOBluetoothDevice.pairedDevices() ?? [] {
+                guard let productID = Self.appleProductID(device) else { continue }
+                DeviceArt.shared.prepare(productID: productID, colorID: Self.privateValue(device, "colorID"))
+            }
+        }
     }
 
     // IOBluetooth calls these on its own queue (macOS 27), not the main thread.
@@ -140,9 +204,35 @@ final class BluetoothMonitor: NSObject {
 
     private func post(_ device: IOBluetoothDevice, connected: Bool) {
         guard let services, services.settings.liveBluetooth else { return }
+        Self.logger.notice("\(connected ? "Connected" : "Disconnected", privacy: .public) \(device.name == nil ? "unnamed" : "named", privacy: .public) device, class \(device.deviceClassMajor)/\(device.deviceClassMinor), LE \(Self.privateValue(device, "isLowEnergyConnection") ?? -1), product \(Self.privateValue(device, "productID") ?? -1), color \(Self.privateValue(device, "colorID") ?? -1)")
+        // macOS names every accessory. A link without a name is an iPhone (iPad, Watch) reaching
+        // the Mac over Bluetooth LE for a second, for Handoff and the like, many times an hour.
+        guard let name = device.name, !name.isEmpty else { return }
+        guard services.settings.liveBluetoothContinuity
+            || !Self.isPhoneTabletOrWatch(name: name, major: device.deviceClassMajor, minor: device.deviceClassMinor)
+        else { return }
+        let productID = Self.appleProductID(device)
+        let airPods = productID.flatMap(AirPodsModel.init(productID:)) ?? AirPodsModel(name: name)
+        let colorID = productID == nil ? nil : Self.privateValue(device, "colorID")
+        // AirPods or Beats without Apple's model here yet (paired since DyNotch started, or in
+        // another color) show once it's in, so they turn in 3D from the start: ~1.5 s, once.
+        guard connected, airPods != nil, services.settings.liveAirPodsAnimation, let productID,
+              DeviceArt.shared.prepare(productID: productID, colorID: colorID) != nil
+        else {
+            show(device, name: name, airPods: airPods, productID: productID, colorID: colorID, connected: connected)
+            return
+        }
+        Task {
+            await DeviceArt.shared.ready(productID: productID, colorID: colorID, within: .seconds(5))
+            // Gone again meanwhile: that already showed.
+            guard device.isConnected() else { return }
+            show(device, name: name, airPods: airPods, productID: productID, colorID: colorID, connected: connected)
+        }
+    }
+
+    private func show(_ device: IOBluetoothDevice, name: String, airPods: AirPodsModel?, productID: Int?, colorID: Int?, connected: Bool) {
+        guard let services else { return }
         let address = Self.normalize(device.addressString ?? "")
-        let name = device.name ?? String(localized: "Bluetooth Device")
-        let airPods = Self.airPodsModel(device, name: name)
         let event = BluetoothEvent(
             address: address,
             name: name,
@@ -150,6 +240,8 @@ final class BluetoothMonitor: NSObject {
             isConnected: connected,
             battery: connected ? Self.hidBattery(address: address) ?? Self.deviceBattery(device) : nil,
             airPods: airPods,
+            productID: productID,
+            colorID: colorID,
             animatesAirPods: services.settings.liveAirPodsAnimation
         )
         let id = "bt-\(address)"
@@ -182,14 +274,10 @@ final class BluetoothMonitor: NSObject {
 
     // MARK: - AirPods
 
-    /// From the device's product ID, else its name. `productID` and `vendorID` are private
+    /// The product ID of an Apple (or Beats) accessory. `productID` and `vendorID` are private
     /// getters, so this checks they're there before asking.
-    static func airPodsModel(_ device: IOBluetoothDevice, name: String) -> AirPodsModel? {
-        if privateValue(device, "vendorID") == 0x004C, let productID = privateValue(device, "productID"),
-           let model = AirPodsModel(productID: productID) {
-            return model
-        }
-        return AirPodsModel(name: name)
+    static func appleProductID(_ device: IOBluetoothDevice) -> Int? {
+        privateValue(device, "vendorID") == 0x004C ? privateValue(device, "productID") : nil
     }
 
     private static func privateValue(_ device: IOBluetoothDevice, _ key: String) -> Int? {
@@ -277,6 +365,23 @@ final class BluetoothMonitor: NSObject {
         address.uppercased().filter(\.isHexDigit)
     }
 
+    /// iPhones, iPads and Apple Watches, which connect by themselves now and then (Handoff,
+    /// unlocking the Mac): a phone, a tablet or a wristwatch by device class, else by name, as
+    /// ones on Bluetooth LE have no class ("iPhone de Carlos", "Jane’s Apple Watch").
+    static func isPhoneTabletOrWatch(name: String, major: BluetoothDeviceClassMajor, minor: BluetoothDeviceClassMinor) -> Bool {
+        phoneTabletOrWatchSymbol(name: name, major: major, minor: minor) != nil
+    }
+
+    /// The symbol of an iPhone, iPad or Apple Watch (any other phone's too), nil for anything else.
+    static func phoneTabletOrWatchSymbol(name: String, major: BluetoothDeviceClassMajor, minor: BluetoothDeviceClassMinor) -> String? {
+        // macOS names a watch with a non-breaking space: "Apple\u{A0}Watch".
+        let lower = name.lowercased().replacingOccurrences(of: "\u{A0}", with: " ")
+        if lower.contains("iphone") { return "iphone" }
+        if lower.contains("ipad") || (major == 0x01 && minor == 0x07) { return "ipad" }
+        if lower.contains("apple watch") || (major == 0x07 && minor == 0x01) { return "applewatch" }
+        return major == 0x02 ? "smartphone" : nil
+    }
+
     static func symbol(name: String, major: BluetoothDeviceClassMajor, minor: BluetoothDeviceClassMinor) -> String {
         let lower = name.lowercased()
         if lower.contains("airpods max") { return "airpods.max" }
@@ -287,6 +392,7 @@ final class BluetoothMonitor: NSObject {
         if lower.contains("trackpad") { return "rectangle.and.hand.point.up.left.filled" }
         if lower.contains("keyboard") { return "keyboard.fill" }
         if lower.contains("controller") || lower.contains("dualsense") || lower.contains("xbox") { return "gamecontroller.fill" }
+        if let symbol = phoneTabletOrWatchSymbol(name: name, major: major, minor: minor) { return symbol }
         switch major {
         case 0x04: return "headphones"
         case 0x05: return minor & 0x10 != 0 ? "keyboard.fill" : "magicmouse.fill"
@@ -321,13 +427,8 @@ struct BluetoothActivityView: View {
                     .font(.system(size: 11.5, weight: .semibold))
                     .foregroundStyle(.white.opacity(0.55))
             } else if let level = event.battery?.summary {
-                HStack(spacing: 6) {
-                    ProgressRing(progress: Double(level) / 100, color: level <= 20 ? .orange : .green, lineWidth: 2.5)
-                        .frame(width: 14, height: 14)
-                    Text("\(level)%")
-                        .font(.system(size: 12, weight: .semibold).monospacedDigit())
-                }
-                .transition(.blurReplace)
+                BatteryGauge(level: level, ring: 14, spacing: 6)
+                    .transition(.blurReplace)
             } else {
                 Text("Connected")
                     .font(.system(size: 11.5, weight: .semibold))

@@ -49,38 +49,63 @@ enum DebugCommands {
                 kind: argument == "low" ? .low : .pluggedIn, percent: argument == "low" ? 9 : 64, isCharging: argument != "low", minutes: 48
             )), duration: 4))
         case "bt":
-            // `bt` / `bt max` / `bt airpods` / `bt 4` connect AirPods, `bt mouse` anything else;
-            // add `late` for a battery that comes in a moment after, `off` to disconnect.
+            // `bt` / `bt max` / `bt airpods` / `bt 4` connect AirPods, `bt beats` / `bt fitpro`
+            // Beats, `bt mouse` / `bt iphone` / `bt ipad` / `bt watch` anything else; add `late`
+            // for a battery that comes in a moment after, `full` for 100%, `off` to disconnect, a
+            // color ID for AirPods in that color (`bt max 0x12`), a product ID (0x2000 and up) for
+            // another model of them (`bt max 0x200A 0x02`: the first AirPods Max, in pink).
             let model: AirPodsModel? = switch argument {
             case "max": .airPodsMax
             case "airpods": .airPods
             case "3": .airPods3
             case "4": .airPods4
-            case "mouse": nil
+            case "beats": .beats(productID: 0x2017)
+            case "fitpro": .beats(productID: 0x2012)
+            case "mouse", "iphone", "ipad", "watch": nil
             default: .airPodsPro
             }
-            let battery = model == .airPodsMax ? BluetoothBattery(main: 72)
+            let name = switch argument {
+            case "iphone": "iPhone de Carlos"
+            case "ipad": "iPad Pro M4 de Carlos"
+            case "watch": "Apple\u{A0}Watch de Carlos"
+            default: model.map { "My \($0.name)" } ?? "Magic Mouse"
+            }
+            // Unless Settings includes them, iPhones, iPads and watches don't show, as with BluetoothMonitor.
+            guard services.settings.liveBluetoothContinuity || !BluetoothMonitor.isPhoneTabletOrWatch(name: name, major: 0, minor: 0) else { return }
+            let battery = parts.contains("full") ? BluetoothBattery(main: 100)
+                : model == .airPodsMax || model == .beats(productID: 0x2017) ? BluetoothBattery(main: 72)
                 : model == nil ? BluetoothBattery(main: 45)
                 : BluetoothBattery(left: 84, right: 18, caseLevel: 60)
             let late = parts.contains("late")
+            let ids = parts.compactMap { $0.hasPrefix("0x") ? Int($0.dropFirst(2), radix: 16) : nil }
             let event = BluetoothEvent(
-                address: "demo", name: model.map { "My \($0.name)" } ?? "Magic Mouse",
-                symbol: model?.symbol ?? "magicmouse.fill", isConnected: !parts.contains("off"),
+                address: "demo", name: name,
+                symbol: model?.symbol ?? BluetoothMonitor.symbol(name: name, major: 0, minor: 0), isConnected: !parts.contains("off"),
                 battery: late ? nil : battery, airPods: model,
+                productID: model.map { model in ids.first { $0 >= 0x2000 } ?? model.typicalProductID },
+                colorID: ids.first { $0 < 0x2000 },
                 animatesAirPods: services.settings.liveAirPodsAnimation
             )
-            services.activities.post(LiveActivity(id: "bt-demo", kind: .bluetooth(event), duration: model == nil ? 3.5 : 5))
-            if late {
-                Task {
-                    try? await Task.sleep(for: .seconds(1.6))
-                    services.activities.update(id: "bt-demo") { activity in
-                        if case .bluetooth(var updated) = activity.kind {
-                            updated.battery = battery
-                            activity.kind = .bluetooth(updated)
-                        }
+            Task {
+                // Apple's model of them first, as for a real connection.
+                if let productID = event.productID, event.animatedAirPods != nil {
+                    await DeviceArt.shared.ready(productID: productID, colorID: event.colorID, within: .seconds(5))
+                }
+                services.activities.post(LiveActivity(id: "bt-demo", kind: .bluetooth(event), duration: model == nil ? 3.5 : 5))
+                guard late else { return }
+                try? await Task.sleep(for: .seconds(1.6))
+                services.activities.update(id: "bt-demo") { activity in
+                    if case .bluetooth(var updated) = activity.kind {
+                        updated.battery = battery
+                        activity.kind = .bluetooth(updated)
                     }
                 }
             }
+        case "art":
+            // `art 0x2012` / `art 0x201F 0x14` fetches Apple's pictures of a model, in a color.
+            let ids = parts.dropFirst().compactMap { $0.hasPrefix("0x") ? Int($0.dropFirst(2), radix: 16) : nil }
+            guard let productID = ids.first else { return }
+            DeviceArt.shared.prepare(productID: productID, colorID: ids.dropFirst().first)
         case "focus":
             services.activities.post(LiveActivity(id: "focus", kind: .focus(FocusEvent(
                 name: "Work", symbol: "briefcase.fill", color: .cyan, isOn: true
@@ -94,6 +119,28 @@ enum DebugCommands {
             services.activities.post(LiveActivity(id: "timer-done", kind: .timerFinished(TimerFinishedEvent(
                 title: "Timer Done", detail: "5:00 timer", mode: .timer
             )), duration: 6))
+        case "call":
+            // `call` / `call Lucía` connects a made-up call (a minute in), `call dial` dials one,
+            // `call video` is FaceTime video, `call end` hangs up, `call off` takes it away.
+            switch argument {
+            case "end":
+                services.calls.end()
+            case "off":
+                services.calls.simulated = nil
+            default:
+                let isDialling = argument == "dial"
+                let isVideo = argument == "video"
+                let name = isDialling || isVideo ? "Lucía Fernández" : parts.dropFirst().joined(separator: " ")
+                services.calls.simulated = OngoingCall(
+                    id: UUID(),
+                    name: name.isEmpty ? "Lucía Fernández" : name,
+                    appBundleID: isVideo ? "com.apple.FaceTime" : "com.apple.mobilephone",
+                    isOutgoing: isDialling,
+                    isVideo: isVideo,
+                    isOnHold: false,
+                    connectedAt: isDialling ? nil : .now.addingTimeInterval(-61)
+                )
+            }
         case "song":
             // `song` / `song back` for a skip, `song end` for a song that played out.
             let change: TrackChange = switch argument {

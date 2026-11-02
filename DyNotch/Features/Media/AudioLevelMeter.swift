@@ -14,7 +14,9 @@ final class AudioLevelMeter {
     private static let stopDelay: Duration = .seconds(1.5)
 
     private let tap = SystemAudioTap()
-    private var isWanted = false
+    private var isMusicWanted = false
+    private var isCallWanted = false
+    private var isWanted: Bool { isMusicWanted || isCallWanted }
     private var visibleBars = 0
     private var isRunning = false
     private var isAskingPermission = false
@@ -23,7 +25,15 @@ final class AudioLevelMeter {
 
     /// Whether music is playing and the user wants the bars to follow it.
     func update(active: Bool) {
-        isWanted = active
+        isMusicWanted = active
+        refresh()
+    }
+
+    /// Whether a call is going on and the user wants the bars to follow the music, so its dots
+    /// follow the call's sound too. Only if DyNotch may already hear system audio: a call
+    /// never asks.
+    func update(onCall: Bool) {
+        isCallWanted = onCall
         refresh()
     }
 
@@ -56,13 +66,13 @@ final class AudioLevelMeter {
             break
         case .notDetermined:
             // Ask up front instead of letting the first tap ask, so the answer is known.
-            guard !isAskingPermission else { return }
+            guard isMusicWanted, !isAskingPermission else { return }
             isAskingPermission = true
             Task {
                 _ = await SystemAudioPermission.request()
                 isAskingPermission = false
                 // Without the TCC SPI the state stays unknown; starting the tap then asks by itself.
-                if isWanted, visibleBars > 0, !isRunning, SystemAudioPermission.state != .denied { start() }
+                if isMusicWanted, visibleBars > 0, !isRunning, SystemAudioPermission.state != .denied { start() }
             }
         }
     }

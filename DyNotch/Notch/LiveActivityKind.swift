@@ -32,6 +32,14 @@ enum LiveActivityKind: Equatable {
         }
     }
 
+    /// Whether pointing at it or clicking it opens the notch, as anywhere else on the notch: not a
+    /// finished timer's alert, where the pointer is on its way to Again or Stop, which opening
+    /// would cover.
+    var opensNotch: Bool {
+        if case .timerFinished = self { return false }
+        return true
+    }
+
     /// The tab with more about it, while it's in the tab bar: where the notch opens while it shows.
     func tab(in settings: AppSettings) -> NotchTab? {
         switch self {
@@ -47,14 +55,13 @@ enum LiveActivityKind: Equatable {
         switch self {
         case .hud(let snapshot): .expanded(width: max(notch.width + 140, 330), extraHeight: snapshot.caption == nil ? 30 : 48)
         case .capsLock: .wings(92)
-        case .focus: .wings(110)
+        case .focus(let focus): .wings(focus.wing)
         case .timerFinished: .expanded(width: max(notch.width + 200, 420), extraHeight: 50)
         case .battery: .wings(108)
         case .bluetooth(let event):
-            // AirPods connecting drop down to play themselves in; anything else fits beside the notch.
-            event.animatedAirPods != nil
-                ? .expanded(width: max(notch.width + 236, 420), extraHeight: 74)
-                : .wings(140)
+            // AirPods and Beats turn into view beside the notch, anything else fits beside it with
+            // its name.
+            event.animatedAirPods == nil ? .wings(140) : .wings(AirPodsActivityView.wing)
         case .nowPlaying(_, _, let change):
             // A song that played out keeps the size of the album art beside the notch.
             // A skip drops down far enough for the title and artist to sit under the notch, beside the cover.

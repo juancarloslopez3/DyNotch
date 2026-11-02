@@ -16,12 +16,17 @@ struct HUDSnapshot: Equatable {
     /// Names what's adjusted where it isn't plain to see: the display, when the HUD doesn't show
     /// on it, or all of them.
     var caption: String?
+    /// Presses past either end of the range so far, counted so each one stretches the bar.
+    var pushes = 0
+
+    /// Muted, or turned all the way down: the speaker shows its slash, in red.
+    var isSilent: Bool { kind == .volume && !isUnavailable && (isMuted || level == 0) }
 
     var symbol: String {
         switch kind {
         case .volume:
             if isUnavailable { return "speaker.badge.exclamationmark.fill" }
-            return isMuted || level == 0 ? "speaker.slash.fill" : "speaker.wave.3.fill"
+            return isSilent ? "speaker.slash.fill" : "speaker.wave.3.fill"
         case .brightness:
             return level < 0.5 ? "sun.min.fill" : "sun.max.fill"
         case .keyboard:
@@ -42,12 +47,11 @@ final class HUDController {
     @ObservationIgnored private weak var services: AppServices?
     @ObservationIgnored private var permissionPoll: Task<Void, Never>?
     @ObservationIgnored private var lastKeyboardLevel: Float = 0.5
+    @ObservationIgnored private var pushes = 0
 
     /// Whether the key tap is active (Accessibility granted).
     private(set) var isActive = false
 
-    private static let step: Float = 1 / 16
-    private static let fineStep: Float = 1 / 64
     static let hudDuration: TimeInterval = 1.6
 
     func start(services: AppServices) {
@@ -87,31 +91,31 @@ final class HUDController {
         let fine = press.flags.contains(.maskShift) && press.flags.contains(.maskAlternate)
         // ⌥ alone + a level key opens the matching System Settings pane; leave that to macOS.
         let optionOnly = press.flags.contains(.maskAlternate) && !fine
-        let step = fine ? Self.fineStep : Self.step
+        func step(_ kind: HUDKind) -> Float { settings.keyStep(for: kind, fine: fine) }
 
         switch press.key {
         case .soundUp, .soundDown, .mute:
             guard settings.hudVolume, !optionOnly else { return false }
-            if press.isDown { adjustVolume(press.key, step: step) }
+            if press.isDown { adjustVolume(press.key, step: step(.volume)) }
             return true
 
         case .brightnessUp, .brightnessDown:
             let up = press.key == .brightnessUp
             if settings.hudKeyboard, keyboard.isAvailable, matches(settings.backlightModifier, press.flags) {
-                if press.isDown { adjustKeyboard(by: up ? step : -step) }
+                if press.isDown { adjustKeyboard(by: up ? step(.keyboard) : -step(.keyboard)) }
                 return true
             }
             guard settings.hudBrightness, !optionOnly, let target = displays.target(for: settings.brightnessKeyScope) else { return false }
-            if press.isDown { adjustBrightness(target, by: up ? step : -step) }
+            if press.isDown { adjustBrightness(target, by: up ? step(.brightness) : -step(.brightness)) }
             return true
 
         case .illuminationUp, .illuminationDown, .illuminationToggle:
             guard settings.hudKeyboard, keyboard.isAvailable, !optionOnly else { return false }
             if press.isDown {
                 switch press.key {
-                case .illuminationUp: adjustKeyboard(by: step)
-                case .illuminationDown: adjustKeyboard(by: -step)
-                default: toggleKeyboard()
+                case .illuminationUp: adjustKeyboard(by: step(.keyboard))
+                case .illuminationDown: adjustKeyboard(by: -step(.keyboard))
+                default: toggleKeyboard(onAtLeast: step(.keyboard))
                 }
             }
             return true
@@ -144,9 +148,14 @@ final class HUDController {
         if key == .mute {
             volume.setMuted(!volume.isMuted)
         } else {
-            let level = Self.stepped(volume.volume, by: key == .soundUp ? step : -step, step: step)
+            let current = volume.volume
+            let level = Self.stepped(current, by: key == .soundUp ? step : -step, step: step)
             volume.setVolume(level)
-            if volume.isMuted, key == .soundUp { volume.setMuted(false) }
+            if volume.isMuted, key == .soundUp {
+                volume.setMuted(false)
+            } else if Self.isPastEnd(current, level) {
+                pushes += 1
+            }
         }
         show(volumeSnapshot)
     }
@@ -155,7 +164,9 @@ final class HUDController {
         // Each display steps from its own level, so all of them together keep their differences.
         for id in displays.ids(in: target) {
             let current = displays.level(of: id) ?? 0.5
-            displays.setLevel(Self.stepped(current, by: delta, step: abs(delta)), of: id)
+            let level = Self.stepped(current, by: delta, step: abs(delta))
+            displays.setLevel(level, of: id)
+            if id == target.lead, Self.isPastEnd(current, level) { pushes += 1 }
         }
         show(brightnessSnapshot(target))
     }
@@ -163,23 +174,30 @@ final class HUDController {
     private func adjustKeyboard(by delta: Float) {
         let current = keyboard.brightness() ?? 0
         let level = Self.stepped(current, by: delta, step: abs(delta))
+        if Self.isPastEnd(current, level) { pushes += 1 }
         keyboard.setBrightness(level)
         if level > 0 { lastKeyboardLevel = level }
         show(HUDSnapshot(kind: .keyboard, level: level))
     }
 
-    private func toggleKeyboard() {
+    private func toggleKeyboard(onAtLeast minimum: Float) {
         let current = keyboard.brightness() ?? 0
-        let level: Float = current > 0 ? 0 : max(lastKeyboardLevel, Self.step)
+        let level: Float = current > 0 ? 0 : max(lastKeyboardLevel, minimum)
         if current > 0 { lastKeyboardLevel = current }
         keyboard.setBrightness(level)
         show(HUDSnapshot(kind: .keyboard, level: level))
     }
 
-    /// Moves `value` by `delta`, snapping to the step grid like macOS does.
+    /// Moves `value` by `delta`, snapping to the step grid like macOS does. Counting in steps
+    /// before multiplying keeps float error from piling up, so fifty 2 % steps make exactly 100 %.
     static func stepped(_ value: Float, by delta: Float, step: Float) -> Float {
-        let snapped = (value / step).rounded() * step
-        return min(max(snapped + delta, 0), 1)
+        let steps = (value / step).rounded() + delta / step
+        return min(max(steps * step, 0), 1)
+    }
+
+    /// Whether a press found the level already at the end it pushed toward, so it stayed put.
+    static func isPastEnd(_ old: Float, _ new: Float) -> Bool {
+        (new == 0 || new == 1) && abs(new - old) < 0.005
     }
 
     /// Sets a level directly (dragging the HUD bar or a slider in the notch). The HUD's bar passes
@@ -234,6 +252,8 @@ final class HUDController {
     }
 
     private func show(_ snapshot: HUDSnapshot) {
+        var snapshot = snapshot
+        snapshot.pushes = pushes
         services?.activities.post(LiveActivity(id: "hud", kind: .hud(snapshot), duration: Self.hudDuration))
     }
 
@@ -243,7 +263,8 @@ final class HUDController {
               case .hud(let snapshot)? = activities.current?.kind,
               snapshot.kind == .volume
         else { return }
-        let fresh = volumeSnapshot
+        var fresh = volumeSnapshot
+        fresh.pushes = snapshot.pushes
         activities.update(id: "hud") { $0.kind = .hud(fresh) }
     }
 

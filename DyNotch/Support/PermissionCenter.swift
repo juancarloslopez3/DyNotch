@@ -165,31 +165,64 @@ final class PermissionCenter {
         case .accessibility, .fullDiskAccess:
             await guide(kind)
         case .calendars:
-            await services?.events.requestCalendarAccess()
+            await keepingWindowInFront { await services?.events.requestCalendarAccess() }
         case .reminders:
-            await services?.events.requestRemindersAccess()
+            await keepingWindowInFront { await services?.events.requestRemindersAccess() }
         case .location:
-            await services?.weather.location.requestAccess()
+            await keepingWindowInFront { await services?.weather.location.requestAccess() }
         case .camera:
-            _ = await AVCaptureDevice.requestAccess(for: .video)
+            _ = await keepingWindowInFront { await AVCaptureDevice.requestAccess(for: .video) }
         case .bluetooth:
-            // Creating a central manager triggers the system prompt.
-            bluetoothManager = CBCentralManager()
-            // Start the monitor once the user answers it.
-            let deadline = ContinuousClock.now + .seconds(60)
-            while CBManager.authorization == .notDetermined, ContinuousClock.now < deadline, !Task.isCancelled {
-                try? await Task.sleep(for: .milliseconds(300))
+            await keepingWindowInFront {
+                // Creating a central manager triggers the system prompt.
+                bluetoothManager = CBCentralManager()
+                // Start the monitor once the user answers it.
+                let deadline = ContinuousClock.now + .seconds(60)
+                while CBManager.authorization == .notDetermined, ContinuousClock.now < deadline, !Task.isCancelled {
+                    try? await Task.sleep(for: .milliseconds(300))
+                }
             }
             if let services { services.bluetooth.startIfAuthorized(services: services) }
         case .notifications:
-            _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
+            _ = await keepingWindowInFront {
+                try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
+            }
         case .systemAudio:
-            if await !SystemAudioPermission.request(), SystemAudioPermission.state == .notDetermined {
+            if await !keepingWindowInFront({ await SystemAudioPermission.request() }),
+               SystemAudioPermission.state == .notDetermined {
                 await guide(.systemAudio)
             }
             services?.media.updateMeter()
         }
         refresh()
+    }
+
+    /// Runs `ask`, which shows one of the system's prompts, and brings back the window it was
+    /// asked from. DyNotch has no Dock icon, so once the prompt is answered macOS skips it and
+    /// hands the focus to the app in front before it (System Settings, say), leaving the window
+    /// behind that app's.
+    private func keepingWindowInFront<T>(_ ask: () async -> T) async -> T {
+        // Asked from a button in the window. The notch never brings DyNotch to the front.
+        let window = NSApp.isActive ? NSApp.keyWindow : nil
+        let answer = await ask()
+        guard let window else { return answer }
+        // The answer can come a moment before the prompt hands the focus on.
+        let deadline = ContinuousClock.now + .seconds(1)
+        while !NSApp.isActive, Self.isPromptInFront, ContinuousClock.now < deadline {
+            try? await Task.sleep(for: .milliseconds(50))
+        }
+        if !NSApp.isActive, !Self.isPromptInFront, window.isVisible {
+            // Plain `activate()` asks, and macOS mostly turns it down here: the app it just
+            // handed the focus to keeps it.
+            NSApp.activate(ignoringOtherApps: true)
+            window.makeKeyAndOrderFront(nil)
+        }
+        return answer
+    }
+
+    /// The prompts come from apps without a Dock icon, such as UserNotificationCenter.
+    private static var isPromptInFront: Bool {
+        NSWorkspace.shared.frontmostApplication?.activationPolicy != .regular
     }
 
     // MARK: - Allow All
