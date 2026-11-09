@@ -454,7 +454,8 @@ private enum UpdateStatus: Equatable {
 }
 
 private struct AboutPane: View {
-    private let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
+    private let version = UpdateController.shared.currentVersion
+    @Bindable private var settings = AppSettings.shared
     @State private var update = UpdateStatus.idle
 
     var body: some View {
@@ -483,7 +484,7 @@ private struct AboutPane: View {
                     case .available(let release):
                         HStack {
                             Button("Release Notes") { NSWorkspace.shared.open(release.page) }
-                            Button("Download") { NSWorkspace.shared.open(release.download) }
+                            Button("Update…") { UpdateController.shared.show(release) }
                                 .buttonStyle(.borderedProminent)
                         }
                     case .failed:
@@ -494,6 +495,10 @@ private struct AboutPane: View {
                 } label: {
                     updateTitle
                     updateDetail
+                }
+                Toggle(isOn: $settings.checkForUpdatesAutomatically) {
+                    Text("Check automatically")
+                    Text("Once a month. You're only told when there's a new version.")
                 }
                 LabeledContent {
                     Button("Star on GitHub", systemImage: "star") { NSWorkspace.shared.open(UpdateChecker.repository) }
@@ -538,7 +543,9 @@ private struct AboutPane: View {
         update = .checking
         Task {
             do {
-                update = try await UpdateChecker.newerRelease(than: version).map(UpdateStatus.available) ?? .upToDate
+                let release = try await UpdateChecker.newerRelease(than: version)
+                UpdateController.shared.lastCheck = .now
+                update = release.map(UpdateStatus.available) ?? .upToDate
             } catch {
                 update = .failed
             }

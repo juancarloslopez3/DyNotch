@@ -17,7 +17,7 @@ DyNotch convierte el notch del MacBook en una Dynamic Island. Pasa el puntero po
 
 ## Instalación
 
-Descarga el último `.dmg` desde la [página de Releases](https://github.com/juancarloslopez3/DyNotch/releases), ábrelo y arrastra **DyNotch** a tu carpeta Aplicaciones. Más adelante, **Buscar actualizaciones** en Ajustes › Acerca de te avisa cuando sale una versión nueva.
+Descarga el último `.dmg` desde la [página de Releases](https://github.com/juancarloslopez3/DyNotch/releases), ábrelo y arrastra **DyNotch** a tu carpeta Aplicaciones. Más adelante, DyNotch te avisa cuando sale una versión nueva y puede instalarla y reiniciarse solo.
 
 DyNotch es un agente de la barra de menús: tras abrirlo, búscalo en el notch y en la barra de menús, no en el Dock. Una visita de bienvenida te guía por los permisos y te hace probar el notch de verdad.
 
@@ -62,7 +62,7 @@ DyNotch es un agente de la barra de menús: tras abrirlo, búscalo en el notch y
 
 ## Privacidad
 
-- **Todo se queda en tu Mac.** Sin cuentas ni analíticas. Las únicas peticiones de red son las del tiempo: tus coordenadas (o el nombre de la ciudad que busques) van a Open-Meteo. **Buscar actualizaciones**, en Ajustes › Acerca de, pregunta a GitHub por la última versión, solo cuando lo pulsas.
+- **Todo se queda en tu Mac.** Sin cuentas ni analíticas. Las únicas peticiones de red son las del tiempo: tus coordenadas (o el nombre de la ciudad que busques) van a Open-Meteo. Una vez al mes, y cuando pulsas **Buscar actualizaciones** en Ajustes › Acerca de, DyNotch pregunta a GitHub por la última versión; solo muestra algo si hay una nueva. Desactiva **Comprobar automáticamente** ahí para que solo pregunte cuando lo pulses.
 - **No se graba nada.** La forma de onda de la música analiza el audio del sistema en seis bandas y descarta las muestras al instante. macOS muestra su punto morado de grabación mientras la forma de onda está en pantalla; desactívala en Ajustes › En reproducción › *Las barras se mueven con la música*.
 - **La cámara, solo cuando miras.** El espejo solo funciona mientras está en pantalla y se detiene en cuanto se cierra el notch.
 

@@ -310,6 +310,16 @@
         }
       }
     },
+    "A new version of DyNotch is available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hay una nueva versión de DyNotch"
+          }
+        }
+      }
+    },
     "A quick look at your camera" : {
       "localizations" : {
         "es" : {
@@ -975,6 +985,16 @@
         }
       }
     },
+    "Check automatically" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprobar automáticamente"
+          }
+        }
+      }
+    },
     "Check for Updates" : {
       "localizations" : {
         "es" : {
@@ -1367,6 +1387,26 @@
         }
       }
     },
+    "Download Manually" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descargar manualmente"
+          }
+        }
+      }
+    },
+    "Downloading…" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descargando…"
+          }
+        }
+      }
+    },
     "Drag DyNotch to the list above" : {
       "localizations" : {
         "es" : {
@@ -1521,12 +1561,38 @@
         }
       }
     },
+    "DyNotch %@ is out. You have version %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "DyNotch %1$@ is out. You have version %2$@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya está disponible DyNotch %1$@. Tienes la versión %2$@."
+          }
+        }
+      }
+    },
     "DyNotch Settings" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustes de DyNotch"
+          }
+        }
+      }
+    },
+    "DyNotch couldn't install the update. Download it and install it by hand." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DyNotch no ha podido instalar la actualización. Descárgala e instálala a mano."
           }
         }
       }
@@ -1982,6 +2048,26 @@
         }
       }
     },
+    "Install and Restart" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalar y reiniciar"
+          }
+        }
+      }
+    },
+    "Installing… DyNotch will restart by itself." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalando… DyNotch se reiniciará solo."
+          }
+        }
+      }
+    },
     "It opens again right away, with Settings where you left it." : {
       "localizations" : {
         "es" : {
@@ -2138,6 +2224,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Última pestaña usada"
+          }
+        }
+      }
+    },
+    "Later" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más tarde"
           }
         }
       }
@@ -2901,6 +2997,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Con adaptador de corriente"
+          }
+        }
+      }
+    },
+    "Once a month. You're only told when there's a new version." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una vez al mes. Solo te avisa si hay una versión nueva."
           }
         }
       }
@@ -4031,6 +4137,16 @@
         }
       }
     },
+    "Software Update" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualización de software"
+          }
+        }
+      }
+    },
     "Song changes and online meetings are in Now Playing and Calendar & Reminders." : {
       "localizations" : {
         "es" : {
@@ -4244,6 +4360,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La cámara se apaga en cuanto se cierra el notch."
+          }
+        }
+      }
+    },
+    "The download didn't finish. Check your internet connection and try again." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La descarga no ha terminado. Comprueba tu conexión a internet y vuelve a intentarlo."
+          }
+        }
+      }
+    },
+    "The download doesn't contain DyNotch." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La descarga no contiene DyNotch."
+          }
+        }
+      }
+    },
+    "The download is damaged. Try again." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La descarga está dañada. Vuelve a intentarlo."
+          }
+        }
+      }
+    },
+    "The download isn't a newer version of DyNotch." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La descarga no es una versión más nueva de DyNotch."
           }
         }
       }
@@ -4570,6 +4726,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Actualizaciones"
+          }
+        }
+      }
+    },
+    "Update…" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar…"
           }
         }
       }

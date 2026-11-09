@@ -14,6 +14,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             // Restarted from Settings › General to change the language.
             SettingsWindowController.shared.show(pane: .general)
         }
+        UpdateController.shared.start()
     }
 
     func applicationWillTerminate(_ notification: Notification) {

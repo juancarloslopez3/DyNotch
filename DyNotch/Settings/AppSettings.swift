@@ -181,6 +181,8 @@ final class AppSettings {
     var showOnExternalDisplays: Bool { didSet { defaults.set(showOnExternalDisplays, forKey: "showOnExternalDisplays") } }
     var hideInFullScreen: Bool { didSet { defaults.set(hideInFullScreen, forKey: "hideInFullScreen") } }
     var showMenuBarIcon: Bool { didSet { defaults.set(showMenuBarIcon, forKey: "showMenuBarIcon") } }
+    /// Once every 30 days, DyNotch asks GitHub for a newer release (`UpdateController`).
+    var checkForUpdatesAutomatically: Bool { didSet { defaults.set(checkForUpdatesAutomatically, forKey: "checkForUpdatesAutomatically") } }
 
     // MARK: Appearance
     var tintWithArtwork: Bool { didSet { defaults.set(tintWithArtwork, forKey: "tintWithArtwork") } }
@@ -298,6 +300,7 @@ final class AppSettings {
         showOnExternalDisplays = bool("showOnExternalDisplays", false)
         hideInFullScreen = bool("hideInFullScreen", false)
         showMenuBarIcon = bool("showMenuBarIcon", true)
+        checkForUpdatesAutomatically = bool("checkForUpdatesAutomatically", true)
 
         tintWithArtwork = bool("tintWithArtwork", true)
         barsFollowMusic = bool("barsFollowMusic", true)

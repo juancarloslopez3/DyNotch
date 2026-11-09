@@ -17,7 +17,7 @@ DyNotch turns the MacBook notch into a Dynamic Island. Hover over it and it open
 
 ## Install
 
-Download the latest `.dmg` from the [Releases page](https://github.com/juancarloslopez3/DyNotch/releases), open it, and drag **DyNotch** into your Applications folder. Later, **Check for Updates** in Settings › About tells you when a new version is out.
+Download the latest `.dmg` from the [Releases page](https://github.com/juancarloslopez3/DyNotch/releases), open it, and drag **DyNotch** into your Applications folder. Later, DyNotch tells you when a new version is out and can install it and restart by itself.
 
 DyNotch is a menu-bar agent: after launch, look for it in the notch and the menu bar, not the Dock. A welcome tour walks you through permissions and has you try the notch on the real thing.
 
@@ -62,7 +62,7 @@ DyNotch is a menu-bar agent: after launch, look for it in the notch and the menu
 
 ## Privacy
 
-- **Everything stays on your Mac.** No accounts, no analytics. The only network requests are for weather: your coordinates (or the city name you search for) go to Open-Meteo. **Check for Updates** in Settings › About asks GitHub for the latest release, only when you click it.
+- **Everything stays on your Mac.** No accounts, no analytics. The only network requests are for weather: your coordinates (or the city name you search for) go to Open-Meteo. Once a month, and when you click **Check for Updates** in Settings › About, DyNotch asks GitHub for the latest release; it only shows anything if there's a new one. Turn off **Check automatically** there to ask only when you click.
 - **Nothing is recorded.** The music waveform analyses the system audio into six bands and drops the samples immediately. macOS shows its purple recording dot while the waveform is on screen; turn it off in Settings › Now Playing › *Bars move with the music*.
 - **Camera only when you look.** The mirror runs only while it's on screen and stops as soon as the notch closes.
 

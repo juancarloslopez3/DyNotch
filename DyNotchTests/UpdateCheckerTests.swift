@@ -28,6 +28,8 @@ struct UpdateCheckerTests {
         let release = try #require(try UpdateChecker.newerRelease(in: Data(json.utf8), than: "1.0"))
         #expect(release.version == "1.2")
         #expect(release.download.lastPathComponent == "DyNotch-1.2.dmg")
+        #expect(release.hasDiskImage)
+        #expect(release.notes.isEmpty)
         #expect(try UpdateChecker.newerRelease(in: Data(json.utf8), than: "1.2") == nil)
     }
 
@@ -37,5 +39,23 @@ struct UpdateCheckerTests {
         """
         let release = try #require(try UpdateChecker.newerRelease(in: Data(json.utf8), than: "1.0"))
         #expect(release.download == release.page)
+        #expect(!release.hasDiskImage)
+    }
+
+    @Test func readsReleaseNotes() throws {
+        let json = """
+        {"tag_name": "v1.2", "html_url": "https://example.com/1.2", "body": "Enhancements:\\r\\n\\r\\n- Notch rim.\\r\\n", "assets": []}
+        """
+        let release = try #require(try UpdateChecker.newerRelease(in: Data(json.utf8), than: "1.1"))
+        #expect(release.notes == "Enhancements:\r\n\r\n- Notch rim.")
+    }
+
+    @Test func checksAgainAfterThirtyDays() {
+        let now = Date()
+        #expect(UpdateController.isCheckDue(lastCheck: nil, now: now))
+        #expect(!UpdateController.isCheckDue(lastCheck: now.addingTimeInterval(-29 * 86_400), now: now))
+        #expect(UpdateController.isCheckDue(lastCheck: now.addingTimeInterval(-30 * 86_400), now: now))
+        // A clock set back doesn't put the next check off for good.
+        #expect(UpdateController.isCheckDue(lastCheck: now.addingTimeInterval(86_400), now: now))
     }
 }
